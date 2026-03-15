@@ -3,12 +3,22 @@
 import { motion } from "framer-motion";
 import PixelButton from "@/components/ui/PixelButton";
 
-const PIXEL_SHAPES = [
-  { size: "8px",  color: "#00FFFF", top: "15%",  left: "8%",  delay: 0   },
-  { size: "16px", color: "#FF00FF", top: "25%",  right: "10%",delay: 1   },
-  { size: "6px",  color: "#00FF41", top: "70%",  left: "6%",  delay: 2   },
-  { size: "12px", color: "#FFE600", bottom: "20%",right: "8%",delay: 0.5 },
-  { size: "10px", color: "#00FFFF", top: "80%",  left: "20%", delay: 1.5 },
+interface PixelShape {
+  size: string;
+  color: string;
+  delay: number;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+}
+
+const PIXEL_SHAPES: PixelShape[] = [
+  { size: "8px",  color: "#00FFFF", top: "15%",  left: "8%",   delay: 0   },
+  { size: "16px", color: "#FF00FF", top: "25%",  right: "10%", delay: 1   },
+  { size: "6px",  color: "#00FF41", top: "70%",  left: "6%",   delay: 2   },
+  { size: "12px", color: "#FFE600", bottom: "20%", right: "8%", delay: 0.5 },
+  { size: "10px", color: "#00FFFF", top: "80%",  left: "20%",  delay: 1.5 },
 ];
 
 const STATS = [
@@ -19,13 +29,13 @@ const STATS = [
 ];
 
 const containerVariants = {
-  hidden: {},
+  hidden:  {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const itemVariants = {
   hidden:  { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25,0.1,0.25,1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as number[] } },
 };
 
 const statVariants = {
@@ -53,10 +63,13 @@ export default function Hero() {
           key={i}
           className="absolute pointer-events-none"
           style={{
-            width: s.size, height: s.size, background: s.color,
-            top: s.top, left: (s as Record<string,string>).left,
-            right: (s as Record<string,string>).right,
-            bottom: (s as Record<string,string>).bottom,
+            width:   s.size,
+            height:  s.size,
+            background: s.color,
+            top:     s.top,
+            left:    s.left,
+            right:   s.right,
+            bottom:  s.bottom,
           }}
           animate={{ y: [0, -8, 0], opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 4, delay: s.delay, repeat: Infinity, ease: "easeInOut" }}
@@ -100,13 +113,19 @@ export default function Hero() {
           <span className="block text-white mt-3" style={{ fontSize: "0.55em" }}>
             WE BUILD DIGITAL EXPERIENCES
           </span>
-          <span className="block text-[#FF00FF] mt-2" style={{ fontSize: "0.5em", textShadow: "0 0 20px rgba(255,0,255,0.5)" }}>
+          <span
+            className="block text-[#FF00FF] mt-2"
+            style={{ fontSize: "0.5em", textShadow: "0 0 20px rgba(255,0,255,0.5)" }}
+          >
             THAT ACTUALLY HIT DIFFERENT
           </span>
         </motion.h1>
 
         {/* Sub */}
-        <motion.p variants={itemVariants} className="text-[13px] text-[#888] mx-auto mt-8 max-w-lg leading-8">
+        <motion.p
+          variants={itemVariants}
+          className="text-[13px] text-[#888] mx-auto mt-8 max-w-lg leading-8"
+        >
           Full-stack web &amp; app development studio. We forge pixel-perfect,
           performance-obsessed digital products — from slick landing pages to complex SaaS platforms.
         </motion.p>
@@ -126,7 +145,10 @@ export default function Hero() {
         >
           {STATS.map((s) => (
             <motion.div key={s.label} variants={statVariants} className="text-center">
-              <span className="block font-pixel text-xl text-[#00FFFF]" style={{ textShadow: "0 0 15px rgba(0,255,255,0.5)" }}>
+              <span
+                className="block font-pixel text-xl text-[#00FFFF]"
+                style={{ textShadow: "0 0 15px rgba(0,255,255,0.5)" }}
+              >
                 {s.num}
               </span>
               <span className="block font-pixel text-[7px] text-[#555] mt-2 tracking-[0.08em]">
