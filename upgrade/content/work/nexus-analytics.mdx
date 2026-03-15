@@ -1,0 +1,66 @@
+---
+title: "Nexus Analytics — Real-Time Fintech Dashboard"
+client: "Nexus Fintech"
+category: "SAAS / WEB APP"
+date: "2024-11-15"
+coverColor: "#00FFFF"
+bgFrom: "#0D0D1A"
+bgTo: "#0A1A1A"
+tags: ["WEB", "SAAS"]
+summary: "We built a real-time data dashboard for a Series A fintech startup that needed to visualise live transaction streams, risk metrics, and portfolio performance across 200+ enterprise clients."
+deliverables:
+  - "Custom React dashboard with 12 chart types"
+  - "WebSocket server for live data feeds"
+  - "Role-based admin panel (4 permission levels)"
+  - "PDF report export engine"
+  - "Onboarding flow for new enterprise clients"
+stack:
+  - "Next.js 14 (App Router)"
+  - "TypeScript"
+  - "Recharts + D3.js"
+  - "Node.js + Express"
+  - "PostgreSQL + Redis"
+  - "WebSockets (Socket.io)"
+  - "AWS ECS + RDS"
+results:
+  - "Dashboard load time reduced from 8s → 1.2s"
+  - "40% reduction in client support tickets post-launch"
+  - "Onboarded 3 new enterprise clients within 30 days of launch"
+  - "99.97% uptime across first 6 months"
+---
+
+## The Brief
+
+Nexus Fintech came to us with a painful problem: their existing dashboard was a patchwork of third-party tools that didn't talk to each other. Their enterprise clients were complaining about latency, their data team was drowning in manual exports, and their sales team couldn't demo the product without it visibly struggling.
+
+They needed a ground-up rebuild. Fast.
+
+## The Challenge
+
+The core technical challenge was **live data at scale**. Nexus handles over 50,000 transactions per minute at peak, and their clients needed to see this data update in real time — not on a 30-second polling interval, not on refresh. *Live.*
+
+The secondary challenge was **multi-tenancy**. 200+ enterprise clients, each with different data sets, different permission models, different branding requirements. The architecture had to handle this cleanly without becoming a spaghetti of conditional logic.
+
+## What We Built
+
+### The Data Layer
+
+We designed a PostgreSQL schema with full row-level security so every query is automatically scoped to the requesting client. No "WHERE client_id = ?" scattered across 400 queries — the database enforces isolation at the foundation.
+
+Redis sits in front of Postgres for the live feeds — we fanout incoming transaction events through Redis pub/sub channels, which our WebSocket server subscribes to and pushes to connected clients in under 80ms.
+
+### The Dashboard
+
+12 custom chart types built on top of Recharts with a D3.js data transformation layer. The charts are fully interactive — drill down, cross-filter, time-range scrubbing. Each enterprise client can customise their layout, save views, and schedule automated PDF exports.
+
+### The Admin Panel
+
+4-level RBAC: Super Admin, Org Admin, Analyst, Read-only. Permissions are enforced at the API level (not just in the UI), with full audit logging of every action.
+
+## The Result
+
+The rebuild took 10 weeks from kick-off to production. Load time went from 8 seconds to 1.2 seconds. Their CTO told us the new dashboard was the single biggest talking point in their next fundraising deck.
+
+> "PIXELFORGEX took our internal tool and turned it into a product we're proud to sell. The quality of the code is exceptional — our engineers were able to take it over immediately."
+> 
+> — Aditya Kapoor, CEO @ Nexus Fintech

@@ -1,0 +1,63 @@
+---
+title: "TaskPilot — Cross-Platform Productivity App"
+client: "TaskPilot Inc."
+category: "MOBILE APP"
+date: "2024-07-20"
+coverColor: "#00FF41"
+bgFrom: "#0A1A0A"
+bgTo: "#001200"
+tags: ["APP"]
+summary: "A cross-platform Flutter productivity app with offline-first architecture, real-time team sync, and smart push notifications — 10,000 downloads in the first 30 days."
+deliverables:
+  - "Flutter app (iOS + Android)"
+  - "Offline-first local database (Hive)"
+  - "Real-time sync with conflict resolution"
+  - "Smart push notification engine"
+  - "Team workspace with invite system"
+  - "Firebase backend + Cloud Functions"
+stack:
+  - "Flutter 3.x"
+  - "Dart"
+  - "Firebase Firestore"
+  - "Firebase Auth"
+  - "Hive (local DB)"
+  - "Firebase Cloud Messaging"
+  - "RevenueCat (subscriptions)"
+results:
+  - "10,000 downloads in 30 days post-launch"
+  - "4.7 stars on App Store (247 ratings)"
+  - "Day-30 retention: 41% (industry avg: 22%)"
+  - "Premium conversion rate: 8.3%"
+---
+
+## The Brief
+
+The productivity app market is crowded. TaskPilot's founder Mike knew this — his thesis was that existing tools either had great individual features but poor team collaboration (Todoist, Things) or great team features but terrible personal task management (Jira, Linear for personal use).
+
+He wanted to build the app that worked brilliantly for a solo freelancer AND for a 5-person startup team using the same product.
+
+## The Technical Foundation: Offline First
+
+The single most important architectural decision we made was **offline-first with conflict resolution**. Most productivity apps are just a thin client over a remote database — when you lose signal on the tube, the app becomes useless.
+
+We built TaskPilot on Hive (a local NoSQL database for Flutter) as the source of truth, with Firebase Firestore as the sync layer. Every action writes locally first and syncs when connectivity is available. Conflicts are resolved with a last-write-wins strategy with a 5-second grace window for in-flight edits.
+
+This alone drove the retention numbers. People actually use the app — constantly — because it never lets them down.
+
+## Smart Push Notifications
+
+The notification engine is the sleeper feature. Instead of bombarding users with "you have tasks due today," TaskPilot's notification system analyses your completion patterns and sends reminders at the times you historically complete tasks.
+
+Completed 3 tasks between 7–8pm every weekday for the last 2 weeks? Your evening reminder shifts to 6:45pm to catch you while you're in the habit. This drove a 40% higher notification engagement rate vs. fixed-time reminders.
+
+## Team Workspaces
+
+The invite system uses short 6-character codes (like Wordle's sharing mechanic) — no email required to join a team. Once inside, tasks have a visibility model: personal, shared, or assigned. Team leaders see a Kanban view of what everyone's working on; individual members see their personal list.
+
+## The Launch
+
+We shipped to both stores simultaneously. The App Store approved in 36 hours; Google Play took 4 days. Mike ran a Product Hunt launch and landed #3 Product of the Day, which drove 4,000 signups in 48 hours.
+
+> "Six weeks from first call to live on the App Store. The code is clean, documented, and our in-house dev could take it over immediately after handoff. I've worked with five development agencies before — none came close to this."
+> 
+> — Mike Johnson, Founder @ TaskPilot
