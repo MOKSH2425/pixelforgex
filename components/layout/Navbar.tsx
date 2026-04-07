@@ -6,7 +6,7 @@ import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between px-10 h-14 border-b border-[#1A1A28]"
+    <nav className="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between px-10 h-16 border-b border-[#1A1A28]"
          style={{ background: "rgba(6,6,8,0.92)", backdropFilter: "blur(12px)" }}>
 
       {/* Logo */}

@@ -114,7 +114,7 @@ export const PROJECTS = [
 
 // ── PROCESS ───────────────────────────────────────────────────
 export const PROCESS_STEPS = [
-  { num: "01", title: "DISCOVERY", desc: "We dig into your goals, users, and competition. Deep brief. Clear scope. No guesswork." },
+  { num: "01", title: "REQUIREMENTS", desc: "We dig into your goals, users, and competition. Deep brief. Clear scope. No guesswork." },
   { num: "02", title: "DESIGN",    desc: "Wireframes to high-fidelity designs. Every screen signed off before we write a line of code." },
   { num: "03", title: "BUILD",     desc: "Sprints. Weekly demos. Real code, real feedback. You're in the loop the whole way." },
   { num: "04", title: "TEST",      desc: "Cross-device QA. Performance audits. We don't ship bugs — we ship confidence." },
@@ -144,13 +144,6 @@ export const TEAM = [
     avatarPalette: ["#00FF41", "#008822", "#004411", "#001100"],
     links: [{ label: "GH", href: "#" }, { label: "PH", href: "#" }, { label: "LI", href: "#" }],
   },
-  {
-    name: "GEMINI MASI",
-    role: "BACKEND / DEVOPS",
-    bio:  "Systems thinker. Builds APIs that don't fall over. Keeps infra lean, fast, and sleeping through 3am traffic spikes.",
-    avatarPalette: ["#FFE600", "#AA9900", "#554400", "#221100"],
-    links: [{ label: "GH", href: "#" }, { label: "LI", href: "#" }, { label: "TW", href: "#" }],
-  },
 ] as const;
 
 // ── WHY US ────────────────────────────────────────────────────
@@ -160,16 +153,18 @@ export const WHY_ITEMS = [
   { icon: "🔄", title: "TRANSPARENT PROCESS", desc: "Weekly updates. Shared Notion. You always know exactly where your money is going." },
   { icon: "🛡️", title: "POST-LAUNCH SUPPORT", desc: "30 days of free post-launch support on every project. We don't disappear after we ship." },
   { icon: "📐", title: "PIXEL PERFECT",        desc: "We sweat the details. Every margin, every animation, every interaction — dialled in." },
-  { icon: "🌐", title: "GLOBAL CLIENTS",       desc: "Clients across India, UAE, UK, and the US. Different timezones, same high standards." },
+  { icon: "🔐", title: "SECURITY MINDED",       desc: "Security isn’t optional.Best practices baked in to keep your product and users safe." },
+  { icon: "🎯", title: "CONVERSION DRIVEN",        desc: "Design that actually converts.Every section, CTA, and flow is crafted to turn visitors into users." },
+  { icon: "🧩", title: "MODULAR ARCHITECTURE",       desc: "Flexible, reusable, future-ready.We build systems that are easy to scale, update, and expand anytime." },
 ] as const;
 
 // ── TESTIMONIALS ──────────────────────────────────────────────
 export const TESTIMONIALS = [
-  { quote: "Literally the best dev team I've worked with. They delivered ahead of schedule and the product looked even better than the designs.", name: "ADITYA KAPOOR",  company: "CEO, Nexus Fintech",     initials: "AK" },
-  { quote: "PIXELFORGEX took our ugly old site and turned it into something we're genuinely proud to show investors. Revenue is up 30% since launch.", name: "SARAH LEWIS",   company: "Founder, Velvet Threads", initials: "SL" },
-  { quote: "Clear communication, great code quality, and zero drama. That's rare. We've hired them for three projects and will keep coming back.", name: "RAHUL MISHRA",  company: "CTO, Bookify Pro",        initials: "RM" },
-  { quote: "They built our entire app in 6 weeks. The code is clean, documented, and our in-house team could pick it up immediately. 10/10.",       name: "MIKE JOHNSON",  company: "Product Lead, TaskPilot", initials: "MJ" },
-  { quote: "The UI they designed feels premium without being pretentious. Our clients compliment the website more than they compliment our actual product.", name: "NEHA PATEL", company: "Director, Orbit Studio",  initials: "NP" },
+  { quote: "Literally the best dev team I've worked with. They delivered ahead of schedule and the product looked even better than the designs.", name: "DEV MAHIDA",  company: "STU, CKP",     initials: "DV" },
+  { quote: "PIXELFORGEX took our ugly old site and turned it into something we're genuinely proud to show investors. Revenue is up 30% since launch.", name: "PRATHAM SHAH",   company: "Founder, PSEDITS", initials: "PS" },
+  { quote: "Clear communication, great code quality, and zero drama. That's rare. We've hired them for three projects and will keep coming back.", name: "MITHILA PAREKH",  company: "FACULTY, CKP COLLEGE", initials: "MP" },
+  { quote: "They built our entire app in 6 weeks. The code is clean, documented, and our in-house team could pick it up immediately. 10/10.", name: "DARSH MOHILE", company: "STU, CKP", initials: "DM" },
+  { quote: "The UI they designed feels premium without being pretentious. Our clients compliment the website more than they compliment our actual product.", name: "KRSHI PATEL", company: "TEAM LEAD, SMARTMED",  initials: "KP" },
 ] as const;
 
 // ── TICKER ────────────────────────────────────────────────────

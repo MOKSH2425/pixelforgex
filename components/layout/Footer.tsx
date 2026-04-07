@@ -3,10 +3,9 @@ import { FOOTER_COLUMNS, SITE } from "@/lib/data";
 import Logo from "@/components/ui/Logo";
 
 const SOCIALS = [
-  { label: "GH", href: "#" },
-  { label: "TW", href: "#" },
-  { label: "LI", href: "#" },
-  { label: "IG", href: "#" },
+  { label: "INSTAGRAM", href: "#" },
+  { label: "GMAIL: shahmoksh7@gmail.com", href: "#" },
+  { label: "CONTACT: 635344388", href: "#" },
 ];
 
 export default function Footer() {
@@ -17,7 +16,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="mb-4">
-            <Logo className="!text-[#00FFFF]" />
+            <Logo />
           </div>
           <p className="text-[11px] text-[#444] leading-8 mb-6 max-w-xs">
             {SITE.tagline} Let&apos;s build something worth shipping.
