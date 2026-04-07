@@ -22,10 +22,8 @@ const PIXEL_SHAPES: PixelShape[] = [
 ];
 
 const STATS = [
-  { num: "50+", label: "PROJECTS SHIPPED" },
-  { num: "30+", label: "HAPPY CLIENTS"    },
+  { num: "10+", label: "PROJECTS SHIPPED" },
   { num: "3YR", label: "IN THE GAME"      },
-  { num: "∞",   label: "PIXELS FORGED"   },
 ];
 
 const containerVariants = {

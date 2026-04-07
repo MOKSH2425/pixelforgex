@@ -3,8 +3,8 @@ import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
 import SectionHeader                from "@/components/ui/SectionHeader";
 
 const STATS = [
-  { num: "50+",  label: "PROJECTS SHIPPED" },
-  { num: "30+",  label: "HAPPY CLIENTS"    },
+  { num: "10+",  label: "PROJECTS SHIPPED" },
+  { num: "4.8",  label: "AVG RATINGS"    },
   { num: "3",    label: "YEARS ACTIVE"     },
   { num: "100%", label: "REMOTE TEAM"      },
 ];

@@ -7,7 +7,7 @@ import FadeUp                 from "@/components/ui/FadeUp";
 import SectionHeader          from "@/components/ui/SectionHeader";
 import { SITE }               from "@/lib/data";
 
-const SOCIALS = ["GITHUB", "TWITTER", "LINKEDIN", "INSTAGRAM"];
+const SOCIALS = ["GMAIL", "INSTAGRAM"];
 
 type FormData = {
   name:        string;
@@ -70,6 +70,7 @@ export default function Contact() {
                 { icon: "✉️", label: "EMAIL",         val: SITE.email    },
                 { icon: "⏱️", label: "RESPONSE TIME", val: SITE.responseTime },
                 { icon: "🟢", label: "STATUS",        val: SITE.status, green: true },
+                { icon: "📞", label: "CONTACT",     val: "+91 635344388" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <span className="text-lg mt-0.5 flex-shrink-0">{item.icon}</span>
@@ -84,17 +85,6 @@ export default function Contact() {
                 </div>
               ))}
 
-              <div className="flex gap-3 flex-wrap pt-2">
-                {SOCIALS.map((s) => (
-                  <a
-                    key={s}
-                    href="#"
-                    className="font-pixel text-[6px] text-[#444] border border-[#222] px-3 py-2 hover:text-[#FF00FF] hover:border-[#FF00FF] transition-all duration-200"
-                  >
-                    {s}
-                  </a>
-                ))}
-              </div>
             </div>
           </FadeUp>
 
@@ -110,7 +100,7 @@ export default function Contact() {
                   <input
                     {...register("name", { required: "Name is required", minLength: { value: 2, message: "Too short" } })}
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="YOUR NAME"
                     className={fieldClass(!!errors.name)}
                   />
                   {errors.name && (
@@ -129,7 +119,7 @@ export default function Contact() {
                       pattern: { value: /^\S+@\S+\.\S+$/, message: "Invalid email" },
                     })}
                     type="email"
-                    placeholder="john@company.com"
+                    placeholder="YOUR EMAIL"
                     className={fieldClass(!!errors.email)}
                   />
                   {errors.email && (
@@ -158,7 +148,7 @@ export default function Contact() {
                   </label>
                   <select {...register("budget")} className={fieldClass()}>
                     <option value="">SELECT RANGE...</option>
-                    {["Under ₹50K","₹50K – ₹1.5L","₹1.5L – ₹5L","₹5L+","Let's talk"].map(o => (
+                    {["Under ₹20K","₹50K – ₹1.5L","₹1.5L – ₹5L","₹5L+","Let's talk"].map(o => (
                       <option key={o}>{o}</option>
                     ))}
                   </select>

@@ -3,9 +3,9 @@ import { FOOTER_COLUMNS, SITE } from "@/lib/data";
 import Logo from "@/components/ui/Logo";
 
 const SOCIALS = [
-  { label: "INSTAGRAM", href: "#" },
-  { label: "GMAIL: shahmoksh7@gmail.com", href: "#" },
-  { label: "CONTACT: 635344388", href: "#" },
+  { label: "INSTAGRAM", href: "https://www.instagram.com/pixelforgex.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "GMAIL", href: "mailto:pixelforgex.dev@gmail.com" },
+  { label: "CONTACT: 635344388", href: "tel:635344388" },
 ];
 
 export default function Footer() {

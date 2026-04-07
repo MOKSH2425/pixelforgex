@@ -5,7 +5,7 @@
 
 export const SITE = {
   name:         "PIXELFORGEX.DEV",
-  email:        "hello@pixelforgex.dev",
+  email:        "pixelforgex.dev@gmail.com",
   location:     "Surat, Gujarat — Remote worldwide",
   status:       "Available for new projects",
   responseTime: "Within 24 hours. Usually much faster.",
@@ -125,7 +125,7 @@ export const PROCESS_STEPS = [
 export const TEAM = [
   {
     name: "DHRUVIN PARMAR",
-    role: "FOUNDER / FULL-STACK",
+    role: "APP DEVLOPMENT LEAD",
     bio:  "8 years deep in web dev. Shipped products for startups in 12 countries. Obsessed with performance and clean code.",
     avatarPalette: ["#00FFFF", "#0088AA", "#004455", "#001122"],
     links: [{ label: "GH", href: "#" }, { label: "LI", href: "#" }, { label: "TW", href: "#" }],
@@ -139,7 +139,7 @@ export const TEAM = [
   },
   {
     name: "VIRAL KHAMBHATI",
-    role: "MOBILE / FLUTTER DEV",
+    role: "WEB DEVELOPMENT LEAD",
     bio:  "Cross-platform mobile maestro. If it runs on a phone, he's built it. Six apps in the App Store, four on Play Store.",
     avatarPalette: ["#00FF41", "#008822", "#004411", "#001100"],
     links: [{ label: "GH", href: "#" }, { label: "PH", href: "#" }, { label: "LI", href: "#" }],
@@ -210,7 +210,6 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: "Privacy Policy",   href: "#" },
       { label: "Terms of Service", href: "#" },
-      { label: "Cookie Policy",    href: "#" },
     ],
   },
 ] as const;

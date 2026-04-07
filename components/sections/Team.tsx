@@ -29,17 +29,6 @@ export default function Team() {
                 <h3 className="font-pixel text-[9px] text-white leading-relaxed mb-1.5">{member.name}</h3>
                 <p className="font-pixel text-[6px] text-[#00FFFF] tracking-[0.08em] mb-4">{member.role}</p>
                 <p className="text-[11px] text-[#555] leading-relaxed mb-6">{member.bio}</p>
-                <div className="flex gap-2 justify-center flex-wrap">
-                  {member.links.map((link) => (
-                    <Link
-                      key={link.label}
-                      href={link.href}
-                      className="font-pixel text-[6px] text-[#444] border border-[#222] px-2 py-1.5 hover:text-[#FF00FF] hover:border-[#FF00FF] transition-all duration-200"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
               </div>
             </StaggerItem>
           ))}
