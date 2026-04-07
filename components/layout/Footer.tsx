@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FOOTER_COLUMNS, SITE } from "@/lib/data";
+import Logo from "@/components/ui/Logo";
 
 const SOCIALS = [
   { label: "GH", href: "#" },
@@ -15,10 +16,9 @@ export default function Footer() {
 
         {/* Brand */}
         <div>
-          <span className="block font-pixel text-[11px] text-[#00FFFF] mb-4"
-                style={{ textShadow: "0 0 10px #00FFFF" }}>
-            PIXEL<span className="text-[#FF00FF]">FORGE</span>X<span className="text-[#FF00FF]">.DEV</span>
-          </span>
+          <div className="mb-4">
+            <Logo className="!text-[#00FFFF]" />
+          </div>
           <p className="text-[11px] text-[#444] leading-8 mb-6 max-w-xs">
             {SITE.tagline} Let&apos;s build something worth shipping.
           </p>

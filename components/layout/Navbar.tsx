@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { NAV_LINKS } from "@/lib/data";
+import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   return (
@@ -9,8 +10,8 @@ export default function Navbar() {
          style={{ background: "rgba(6,6,8,0.92)", backdropFilter: "blur(12px)" }}>
 
       {/* Logo */}
-      <Link href="#hero" className="font-pixel text-[10px] text-[#00FFFF] tracking-[0.05em] no-underline animate-neonpulse">
-        PIXEL<span className="text-[#FF00FF]">FORGE</span>X<span className="text-[#FF00FF]">.DEV</span>
+      <Link href="#hero" className="no-underline">
+        <Logo />
       </Link>
 
       {/* Links */}
@@ -33,7 +34,7 @@ export default function Navbar() {
         href="#contact"
         className="font-pixel text-[7px] text-[#060608] bg-[#00FFFF] px-[14px] py-2 tracking-[0.05em] clip-skew-sm hover:bg-[#FF00FF] transition-colors duration-200"
       >
-        HIRE US
+        GET IN TOUCH
       </Link>
     </nav>
   );
