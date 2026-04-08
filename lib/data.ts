@@ -83,6 +83,15 @@ export const PROJECTS = [
     techColors: ["#7CFFB2", "#00FFFF", "#B8FFF1"],
     tags: ["WEB", "SAAS"],
   },
+  {
+    id: "aura-coffee",
+    category: "FRONTEND WEB DEVELOPMENT / E-COMMERCE CONCEPT",
+    name: "AURA COFFEE WEB EXPERIENCE",
+    desc: "An elegant concept website for a premium coffee boutique, combining immersive storytelling, product discovery, and a refined reservation flow.",
+    color: "#D6A46C", bgFrom: "#1E140F", bgTo: "#100B08",
+    techColors: ["#D6A46C", "#F5E6D3", "#8E5C35"],
+    tags: ["WEB", "E-COM"],
+  },
 ] as const;
 
 // ── PROCESS ───────────────────────────────────────────────────
