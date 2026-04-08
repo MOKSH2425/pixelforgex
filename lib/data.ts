@@ -92,6 +92,15 @@ export const PROJECTS = [
     techColors: ["#D6A46C", "#F5E6D3", "#8E5C35"],
     tags: ["WEB", "E-COM"],
   },
+  {
+    id: "ckpcet-event-registration",
+    category: "FULL-STACK WEB DEVELOPMENT / EVENT MANAGEMENT",
+    name: "CAMPUS EVENT REGISTRATION SYSTEM",
+    desc: "A centralized MERN stack platform for campus event discovery, student registration, and streamlined administrative tracking.",
+    color: "#8FB8FF", bgFrom: "#0F1524", bgTo: "#0A0F1A",
+    techColors: ["#8FB8FF", "#00FFFF", "#DCE8FF"],
+    tags: ["WEB", "SAAS"],
+  },
 ] as const;
 
 // ── PROCESS ───────────────────────────────────────────────────
