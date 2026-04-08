@@ -7,8 +7,6 @@ import FadeUp                 from "@/components/ui/FadeUp";
 import SectionHeader          from "@/components/ui/SectionHeader";
 import { SITE }               from "@/lib/data";
 
-const SOCIALS = ["GMAIL", "INSTAGRAM"];
-
 type FormData = {
   name:        string;
   email:       string;

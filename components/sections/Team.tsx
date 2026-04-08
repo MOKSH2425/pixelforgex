@@ -1,4 +1,3 @@
-import Link from "next/link";
 import FadeUp from "@/components/ui/FadeUp";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
 import SectionHeader from "@/components/ui/SectionHeader";
