@@ -74,6 +74,15 @@ export const PROJECTS = [
     techColors: ["#FF9ECF", "#FFE6F2", "#C86BFA"],
     tags: ["WEB", "E-COM"],
   },
+  {
+    id: "smartmed-fullstack",
+    category: "FULL-STACK WEB DEVELOPMENT / HEALTHCARE TECH",
+    name: "SMARTMED RECOMMENDATION SYSTEM",
+    desc: "A full-stack healthcare application built around an intelligent symptom-driven medicine recommendation engine and a clean, responsive user experience.",
+    color: "#7CFFB2", bgFrom: "#0C1B1A", bgTo: "#081211",
+    techColors: ["#7CFFB2", "#00FFFF", "#B8FFF1"],
+    tags: ["WEB", "SAAS"],
+  },
 ] as const;
 
 // ── PROCESS ───────────────────────────────────────────────────
