@@ -65,6 +65,15 @@ export const PROJECTS = [
     techColors: ["#00FFFF", "#FFE600", "#00FF41"],
     tags: ["WEB"],
   },
+  {
+    id: "beauty-atelier",
+    category: "FULL-STACK WEB DEVELOPMENT / E-COMMERCE",
+    name: "BEAUTY ATELIER E-COMMERCE PLATFORM",
+    desc: "A full-stack MERN e-commerce platform crafted to deliver a premium shopping experience for luxury beauty and skincare products.",
+    color: "#FF9ECF", bgFrom: "#22141D", bgTo: "#130E14",
+    techColors: ["#FF9ECF", "#FFE6F2", "#C86BFA"],
+    tags: ["WEB", "E-COM"],
+  },
 ] as const;
 
 // ── PROCESS ───────────────────────────────────────────────────
