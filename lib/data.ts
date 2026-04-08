@@ -101,6 +101,15 @@ export const PROJECTS = [
     techColors: ["#8FB8FF", "#00FFFF", "#DCE8FF"],
     tags: ["WEB", "SAAS"],
   },
+  {
+    id: "expense-tracker-app",
+    category: "MOBILE APP DEVELOPMENT / FINTECH",
+    name: "EXPENSE TRACKER MOBILE APP",
+    desc: "A cross-platform Flutter app for tracking income, expenses, budgets, and financial activity through a clean mobile-first experience.",
+    color: "#F2C94C", bgFrom: "#1F1808", bgTo: "#110D05",
+    techColors: ["#F2C94C", "#00FFFF", "#FFF0B3"],
+    tags: ["APP"],
+  },
 ] as const;
 
 // ── PROCESS ───────────────────────────────────────────────────
