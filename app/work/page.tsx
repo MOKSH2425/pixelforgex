@@ -5,8 +5,8 @@ import Navbar         from "@/components/layout/Navbar";
 import Footer         from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "Case Studies — PIXELFORGEX.DEV",
-  description: "Deep dives into how we built our best work. Real problems, real solutions, real results.",
+  title: "My Projects — PIXELFORGEX.DEV",
+  description: "A closer look at the projects we've designed and built, from concept to polished final experience.",
 };
 
 export default function WorkPage() {
@@ -29,20 +29,20 @@ export default function WorkPage() {
               ← BACK TO HOME
             </Link>
             <span className="block font-pixel text-[7px] text-[#00FFFF] tracking-[0.15em] mb-3">
-              <span className="text-[#1A1A28]">// </span>CASE STUDIES
+              <span className="text-[#1A1A28]">// </span>MY PROJECTS
             </span>
             <h1 className="font-pixel text-white mb-4 leading-relaxed"
                 style={{ fontSize: "clamp(14px,3vw,28px)" }}>
-              THE WORK
+              MY PROJECTS
             </h1>
             <p className="text-[#666] text-[13px] leading-8 max-w-lg">
-              Deep dives into how we built our best projects. Real briefs, real challenges, real results — no fluff.
+              Explore the projects we&apos;ve brought to life with thoughtful design, strong front-end execution, and a focus on real-world usability.
             </p>
           </div>
 
           {/* Posts grid */}
           {posts.length === 0 ? (
-            <p className="font-pixel text-[8px] text-[#333]">NO CASE STUDIES YET — CHECK BACK SOON.</p>
+            <p className="font-pixel text-[8px] text-[#333]">NO PROJECTS YET — CHECK BACK SOON.</p>
           ) : (
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (

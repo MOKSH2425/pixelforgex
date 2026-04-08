@@ -57,57 +57,12 @@ export const SERVICES = [
 //     e.g. id: "nexus-analytics"  →  content/work/nexus-analytics.mdx
 export const PROJECTS = [
   {
-    id: "nexus-analytics",          // ← matches nexus-analytics.mdx
-    category: "SAAS / WEB APP",
-    name: "NEXUS ANALYTICS",
-    desc: "Real-time data dashboard for a fintech startup. Custom charts, live feeds, and an admin panel their whole team actually uses.",
-    color: "#00FFFF", bgFrom: "#0D0D1A", bgTo: "#0A1A1A",
-    techColors: ["#00FFFF", "#FF00FF", "#00FF41"],
-    tags: ["WEB", "SAAS"],
-  },
-  {
-    id: "velvet-threads",           // ← matches velvet-threads.mdx
-    category: "E-COMMERCE",
-    name: "VELVET THREADS",
-    desc: "Premium fashion store with custom Shopify theme, advanced filtering, and a wishlist feature that boosted retention by 40%.",
-    color: "#FF00FF", bgFrom: "#1A0D1A", bgTo: "#120012",
-    techColors: ["#FF00FF", "#FFE600"],
-    tags: ["WEB", "E-COM"],
-  },
-  {
-    id: "taskpilot-app",            // ← matches taskpilot-app.mdx
-    category: "MOBILE APP",
-    name: "TASKPILOT APP",
-    desc: "Cross-platform productivity app with offline sync, push notifications, and team collaboration — 10k downloads in first month.",
-    color: "#00FF41", bgFrom: "#0A1A0A", bgTo: "#001200",
-    techColors: ["#00FF41", "#00FFFF"],
-    tags: ["APP"],
-  },
-  {
-    id: "aurum-capital",            // ← create content/work/aurum-capital.mdx when ready
-    category: "CORPORATE / WEB",
-    name: "AURUM CAPITAL",
-    desc: "Investment firm site with CMS, client portal, and multilingual support. Built for trust, built to convert high-value leads.",
-    color: "#FFE600", bgFrom: "#1A1400", bgTo: "#120E00",
-    techColors: ["#FFE600", "#FF00FF"],
-    tags: ["WEB"],
-  },
-  {
-    id: "bookify-pro",              // ← create content/work/bookify-pro.mdx when ready
-    category: "SAAS / PLATFORM",
-    name: "BOOKIFY PRO",
-    desc: "Appointment booking SaaS for SMBs. Stripe subscriptions, calendar sync, automated reminders, and a white-label option.",
-    color: "#FF6B00", bgFrom: "#150A00", bgTo: "#1A0800",
-    techColors: ["#FF6B00", "#00FFFF", "#00FF41"],
-    tags: ["WEB", "SAAS"],
-  },
-  {
-    id: "orbit-studio",             // ← create content/work/orbit-studio.mdx when ready
-    category: "BRANDING / WEB",
-    name: "ORBIT STUDIO",
-    desc: "Full brand identity + website for a creative agency. Custom animations, interactive portfolio, Webflow CMS they can manage solo.",
-    color: "#8888FF", bgFrom: "#0D0D1A", bgTo: "#080D1A",
-    techColors: ["#8888FF", "#FF00FF"],
+    id: "pixelforgex-developer",
+    category: "WEB DEVELOPMENT / CORPORATE REAL ESTATE WEBSITE",
+    name: "PIXELFORGEX DEVELOPER WEBSITE",
+    desc: "A modern, responsive multi-page website built to showcase a premium eco-luxury real estate developer with a polished buyer journey.",
+    color: "#00FFFF", bgFrom: "#0E1620", bgTo: "#0B0F14",
+    techColors: ["#00FFFF", "#FFE600", "#00FF41"],
     tags: ["WEB"],
   },
 ] as const;
@@ -176,11 +131,11 @@ export const TICKER_ITEMS = [
 // ── NAV LINKS ─────────────────────────────────────────────────
 export const NAV_LINKS = [
   { label: "Services",     href: "#services"  },
-  { label: "Work",         href: "#portfolio" },
+  { label: "Projects",     href: "#portfolio" },
   { label: "About",        href: "#about"     },
   { label: "Team",         href: "#team"      },
   { label: "Contact",      href: "#contact"   },
-  { label: "Case Studies", href: "/work"      },
+  { label: "My Projects",  href: "/work"      },
 ] as const;
 
 // ── FOOTER COLUMNS ────────────────────────────────────────────
@@ -200,7 +155,7 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: "About Us",    href: "#about"     },
       { label: "Team",        href: "#team"       },
-      { label: "Portfolio",   href: "#portfolio"  },
+      { label: "Projects",    href: "#portfolio"  },
       { label: "How We Work", href: "#process"    },
       { label: "Contact",     href: "#contact"    },
     ],

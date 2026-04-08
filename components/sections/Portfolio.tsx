@@ -22,9 +22,9 @@ export default function Portfolio() {
       <div className="max-w-[1100px] mx-auto">
         <FadeUp>
           <SectionHeader
-            label="PORTFOLIO"
-            title="SELECTED WORK"
-            sub="A few things we've forged. Each one built with care, coffee, and way too many Figma frames."
+            label="PROJECTS"
+            title="MY PROJECTS"
+            sub="A growing collection of real builds. Each project is shaped around clear goals, clean execution, and a polished user experience."
           />
         </FadeUp>
 
@@ -100,7 +100,7 @@ export default function Portfolio() {
                       href={`/work/${proj.id}`}
                       className="font-pixel text-[8px] text-[#00FFFF] border border-[#00FFFF] px-4 py-2 hover:bg-[#00FFFF] hover:text-[#060608] transition-all duration-200"
                     >
-                      READ CASE STUDY →
+                      VIEW PROJECT →
                     </Link>
                   </motion.div>
                 </div>

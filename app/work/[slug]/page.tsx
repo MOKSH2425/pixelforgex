@@ -23,6 +23,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 // ── MDX components ────────────────────────────────────────────
 const mdxComponents = {
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      className="text-[#00FFFF] underline underline-offset-4 hover:text-[#FF00FF] transition-colors duration-200"
+      {...props}
+    />
+  ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2 className="font-pixel text-[10px] text-white leading-relaxed mt-10 mb-4" {...props} />
   ),
@@ -123,7 +129,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             href="/work"
             className="inline-block font-pixel text-[7px] text-[#555] hover:text-[#00FFFF] transition-colors duration-200 mt-10 mb-12"
           >
-            ← ALL CASE STUDIES
+            ← ALL PROJECTS
           </Link>
 
           {/* 3-column meta cards */}

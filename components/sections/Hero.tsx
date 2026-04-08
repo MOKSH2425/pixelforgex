@@ -130,7 +130,7 @@ export default function Hero() {
 
         {/* Buttons */}
         <motion.div variants={itemVariants} className="flex gap-6 justify-center flex-wrap mt-10">
-          <PixelButton href="#portfolio" variant="primary">VIEW OUR WORK →</PixelButton>
+          <PixelButton href="#portfolio" variant="primary">VIEW MY PROJECTS →</PixelButton>
           <PixelButton href="#contact"   variant="outline">START A PROJECT</PixelButton>
         </motion.div>
 
