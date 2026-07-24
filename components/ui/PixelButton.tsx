@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import clsx from "clsx";
+import { motion } from "framer-motion";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 interface PixelButtonProps {
   href: string;
@@ -8,25 +12,28 @@ interface PixelButtonProps {
   className?: string;
 }
 
+/** Kept the filename to avoid touching every import; now a magnetic, springy pill button. */
 export default function PixelButton({
   href,
   variant = "primary",
   children,
   className,
 }: PixelButtonProps) {
-  const base =
-    "inline-block font-pixel text-[9px] tracking-[0.06em] px-7 py-4 cursor-pointer transition-transform duration-100 active:translate-y-0.5 clip-skew select-none";
-
-  const styles = {
-    primary:
-      "text-[#060608] bg-[#00FFFF] hover:bg-[#00E5E5]",
-    outline:
-      "text-[#FF00FF] bg-transparent border border-[#FF00FF] hover:bg-[rgba(255,0,255,0.08)]",
-  };
+  const { ref, x, y, handleMouseMove, handleMouseLeave } = useMagnetic<HTMLDivElement>(0.25);
 
   return (
-    <Link href={href} className={clsx(base, styles[variant], className)}>
-      {children}
-    </Link>
+    <motion.div
+      ref={ref}
+      style={{ x, y, display: "inline-block" }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.93 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+    >
+      <Link href={href} className={clsx("btn", variant === "primary" ? "btn-primary" : "btn-outline", className)}>
+        {children}
+      </Link>
+    </motion.div>
   );
 }

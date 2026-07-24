@@ -3,22 +3,20 @@ import { FOOTER_COLUMNS, SITE } from "@/lib/data";
 import Logo from "@/components/ui/Logo";
 
 const SOCIALS = [
-  { label: "INSTAGRAM", href: "https://www.instagram.com/pixelforgex.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { label: "GMAIL", href: "mailto:pixelforgex.dev@gmail.com" },
-  { label: "CONTACT: 635344388", href: "tel:635344388" },
+  { label: "Instagram", href: "https://www.instagram.com/pixelforgex.dev?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { label: "Email",     href: "mailto:pixelforgex.dev@gmail.com" },
+  { label: "Call",      href: "tel:635344388" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#060608] border-t border-[#1A1A28] relative z-[1]">
-      <div className="max-w-[1100px] mx-auto px-8 pt-12 pb-0 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
-
-        {/* Brand */}
+    <footer className="bg-surface-2 border-t border-line relative z-[1]">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-8 pt-16 pb-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr] gap-x-10 gap-y-12">
         <div>
           <div className="mb-4">
             <Logo />
           </div>
-          <p className="text-[11px] text-[#444] leading-8 mb-6 max-w-xs">
+          <p className="text-[14px] text-subtle leading-7 mb-6 max-w-xs">
             {SITE.tagline} Let&apos;s build something worth shipping.
           </p>
           <div className="flex gap-3 flex-wrap">
@@ -26,7 +24,7 @@ export default function Footer() {
               <Link
                 key={s.label}
                 href={s.href}
-                className="font-pixel text-[6px] text-[#444] border border-[#222] px-3 py-2 hover:text-[#FF00FF] hover:border-[#FF00FF] transition-all duration-200"
+                className="text-[13px] font-medium text-subtle border border-line rounded-full px-4 py-2 hover:text-ink hover:border-faint transition-all duration-200"
               >
                 {s.label}
               </Link>
@@ -34,18 +32,17 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Column links */}
         {FOOTER_COLUMNS.map((col) => (
           <div key={col.title}>
-            <p className="font-pixel text-[7px] text-white mb-5 tracking-[0.08em]">
-              {col.title}
+            <p className="text-[13px] font-semibold text-ink mb-5 tracking-tight capitalize">
+              {col.title.toLowerCase()}
             </p>
             <ul className="space-y-3">
               {col.links.map((l) => (
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-[12px] text-[#444] hover:text-[#00FFFF] transition-colors duration-200"
+                    className="text-[14px] text-subtle hover:text-ink transition-colors duration-200"
                   >
                     {l.label}
                   </Link>
@@ -56,13 +53,12 @@ export default function Footer() {
         ))}
       </div>
 
-      {/* Bottom bar */}
-      <div className="max-w-[1100px] mx-auto px-8 mt-8 border-t border-[#1A1A28] py-6 flex flex-wrap items-center justify-between gap-4">
-        <p className="font-pixel text-[6px] text-[#333] tracking-[0.05em]">
-          © 2025 <span className="text-[#00FFFF]">PIXELFORGEX.DEV</span> — ALL RIGHTS RESERVED
+      <div className="max-w-[1100px] mx-auto px-6 md:px-8 mt-10 border-t border-line py-6 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-[13px] text-faint">
+          © 2025 Pixelforgex — All rights reserved
         </p>
-        <p className="text-[10px] text-[#333]">
-          Made with <span className="text-[#FF00FF]">❤</span> in Surat, India
+        <p className="text-[13px] text-faint">
+          Made with care in Surat, India
         </p>
       </div>
     </footer>

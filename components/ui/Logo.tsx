@@ -1,15 +1,14 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Logo({ className }: { className?: string }) {
   return (
-    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-md border border-[#00FFFF] overflow-hidden ${className || ""}`}>
-      <Image
-        src="/logo.png"
-        alt="PIXELFORGEX.DEV Logo"
-        width={32}
-        height={32}
-        className="object-contain"
-      />
-    </div>
+    <Link href="#hero" className={`inline-flex items-center gap-2.5 no-underline group ${className ?? ""}`}>
+      <span className="w-8 h-8 rounded-[9px] bg-ink flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-hover:scale-105">
+        <span className="text-bg font-semibold text-[15px] tracking-tight">P</span>
+      </span>
+      <span className="font-semibold text-[17px] tracking-tight text-ink">
+        Pixelforgex
+      </span>
+    </Link>
   );
 }

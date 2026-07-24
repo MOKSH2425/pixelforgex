@@ -1,27 +1,25 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { useInView }        from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 
 interface FadeUpProps {
   children: React.ReactNode;
   delay?: number;
-  duration?: number;
   className?: string;
   once?: boolean;
 }
 
 const variants: Variants = {
-  hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0  },
+  hidden: { opacity: 0, y: 32, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1 },
 };
 
 export default function FadeUp({
   children,
-  delay    = 0,
-  duration = 0.6,
+  delay = 0,
   className,
-  once     = true,
+  once = true,
 }: FadeUpProps) {
   const { ref, inView } = useInView({ triggerOnce: once, threshold: 0.12 });
 
@@ -32,7 +30,7 @@ export default function FadeUp({
       variants={variants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ type: "spring", stiffness: 260, damping: 20, mass: 0.6, delay }}
     >
       {children}
     </motion.div>

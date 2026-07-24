@@ -1,11 +1,11 @@
-import Link          from "next/link";
+import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/posts";
-import GlitchBar      from "@/components/ui/GlitchBar";
-import Navbar         from "@/components/layout/Navbar";
-import Footer         from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "My Projects — PIXELFORGEX.DEV",
+  title: "Case Studies — Pixelforgex",
   description: "A closer look at the projects we've designed and built, from concept to polished final experience.",
 };
 
@@ -14,96 +14,74 @@ export default function WorkPage() {
 
   return (
     <>
-      <GlitchBar />
       <Navbar />
 
-      <main className="min-h-screen pt-24 pb-24 px-8 relative z-[1]">
+      <main className="min-h-screen pt-32 pb-24 px-6 relative z-[1]">
         <div className="max-w-[1100px] mx-auto">
-
-          {/* Header */}
-          <div className="mb-16 border-b border-[#1A1A28] pb-12">
+          <div className="mb-14 border-b border-line pb-12">
             <Link
               href="/"
-              className="inline-block font-pixel text-[7px] text-[#555] hover:text-[#00FFFF] transition-colors duration-200 mb-8"
+              className="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-subtle hover:text-ink transition-colors duration-200 mb-8"
             >
-              ← BACK TO HOME
+              <ArrowLeft size={14} /> Back to home
             </Link>
-            <span className="block font-pixel text-[7px] text-[#00FFFF] tracking-[0.15em] mb-3">
-              <span className="text-[#1A1A28]">// </span>MY PROJECTS
-            </span>
-            <h1 className="font-pixel text-white mb-4 leading-relaxed"
-                style={{ fontSize: "clamp(14px,3vw,28px)" }}>
-              MY PROJECTS
+            <span className="eyebrow block mb-3">Case studies</span>
+            <h1
+              className="font-semibold text-ink mb-4 tracking-tight leading-tight"
+              style={{ fontSize: "clamp(28px, 4.5vw, 44px)" }}
+            >
+              Our work
             </h1>
-            <p className="text-[#666] text-[13px] leading-8 max-w-lg">
+            <p className="text-subtle text-[15.5px] leading-7 max-w-lg">
               Explore the projects we&apos;ve brought to life with thoughtful design, strong front-end execution, and a focus on real-world usability.
             </p>
           </div>
 
-          {/* Posts grid */}
           {posts.length === 0 ? (
-            <p className="font-pixel text-[8px] text-[#333]">NO PROJECTS YET — CHECK BACK SOON.</p>
+            <p className="text-subtle text-[14px]">No case studies yet — check back soon.</p>
           ) : (
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/work/${post.slug}`}
-                  className="group bg-[#0D0D12] border border-[#1A1A28] overflow-hidden hover:border-[rgba(255,0,255,0.4)] transition-all duration-300 hover:-translate-y-1 block"
+                  className="group card overflow-hidden hover:shadow-soft hover:-translate-y-1 transition-all duration-300 block"
                 >
-                  {/* Thumb */}
                   <div
-                    className="h-[160px] flex items-center justify-center relative overflow-hidden"
-                    style={{ background: `linear-gradient(135deg, ${post.bgFrom}, ${post.bgTo})` }}
+                    className="h-[150px] flex items-center justify-center relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${post.coverColor}22, var(--color-surface-2))` }}
                   >
                     <span
-                      className="font-pixel text-[8px] tracking-[0.1em] px-4 text-center leading-relaxed"
-                      style={{ color: post.coverColor, textShadow: `0 0 20px ${post.coverColor}80` }}
+                      className="text-[14px] font-semibold tracking-tight px-4 text-center leading-relaxed"
+                      style={{ color: post.coverColor }}
                     >
                       {post.client}
                     </span>
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
-                      style={{ background: post.coverColor }}
-                    />
                   </div>
 
-                  {/* Meta */}
                   <div className="p-6">
-                    <p className="font-pixel text-[6px] text-[#FF00FF] tracking-[0.1em] mb-2">
-                      {post.category}
-                    </p>
-                    <h2 className="font-pixel text-[9px] text-white leading-relaxed mb-3">
-                      {post.title}
-                    </h2>
-                    <p className="text-[11px] text-[#666] leading-relaxed mb-4">
-                      {post.summary}
-                    </p>
+                    <p className="eyebrow text-[11px] mb-2 normal-case tracking-normal">{post.category}</p>
+                    <h2 className="text-[16px] font-semibold text-ink leading-snug mb-2">{post.title}</h2>
+                    <p className="text-[13.5px] text-subtle leading-6 mb-4">{post.summary}</p>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
+                    <div className="flex flex-wrap gap-1.5">
                       {post.stack.slice(0, 3).map((s) => (
-                        <span
-                          key={s}
-                          className="font-pixel text-[6px] text-[#555] border border-[#222] px-2 py-1"
-                        >
+                        <span key={s} className="text-[12px] font-medium text-subtle bg-surface-2 border border-line rounded-full px-2.5 py-1">
                           {s}
                         </span>
                       ))}
                       {post.stack.length > 3 && (
-                        <span className="font-pixel text-[6px] text-[#333] px-2 py-1">
-                          +{post.stack.length - 3}
-                        </span>
+                        <span className="text-[12px] text-faint px-1 py-1">+{post.stack.length - 3}</span>
                       )}
                     </div>
                   </div>
 
-                  <div className="px-6 py-3 border-t border-[#1A1A28] flex items-center justify-between">
-                    <span className="text-[10px] text-[#444]">
+                  <div className="px-6 py-3.5 border-t border-line flex items-center justify-between">
+                    <span className="text-[12.5px] text-faint">
                       {new Date(post.date).toLocaleDateString("en-IN", { month: "short", year: "numeric" })}
                     </span>
-                    <span className="font-pixel text-[7px] text-[#00FFFF] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      READ →
+                    <span className="text-[13px] font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200 inline-flex items-center gap-1">
+                      Read <ArrowRight size={13} />
                     </span>
                   </div>
                 </Link>
@@ -113,7 +91,6 @@ export default function WorkPage() {
         </div>
       </main>
 
-      <GlitchBar />
       <Footer />
     </>
   );

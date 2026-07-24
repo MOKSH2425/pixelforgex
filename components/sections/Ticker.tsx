@@ -1,17 +1,27 @@
 import { TICKER_ITEMS } from "@/lib/data";
 
 export default function Ticker() {
-  const doubled = [...TICKER_ITEMS, ...TICKER_ITEMS]; // infinite loop trick
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
 
   return (
-    <div className="bg-[#0D0D12] border-t border-b border-[rgba(0,255,255,0.15)] overflow-hidden py-3 relative z-[1]">
+    <div className="relative border-y border-line bg-surface-2 py-5 overflow-hidden">
+      <div
+        className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(90deg, var(--color-surface-2), transparent)" }}
+      />
+      <div
+        className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(270deg, var(--color-surface-2), transparent)" }}
+      />
+
       <div className="flex w-max animate-ticker">
-        {[...doubled, ...doubled].map((item, i) => (
+        {items.map((item, i) => (
           <span
-            key={i}
-            className="font-pixel text-[7px] text-[#555] whitespace-nowrap px-10"
+            key={`${item}-${i}`}
+            className="flex items-center gap-8 text-[14px] font-medium text-subtle whitespace-nowrap px-8"
           >
-            ⬛ {item} <span className="text-[#00FFFF]">✦</span>
+            {item}
+            <span className="w-1.5 h-1.5 rounded-full bg-line" />
           </span>
         ))}
       </div>

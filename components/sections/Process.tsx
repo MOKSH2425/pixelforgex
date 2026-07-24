@@ -1,35 +1,73 @@
-import FadeUp                      from "@/components/ui/FadeUp";
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import FadeUp from "@/components/ui/FadeUp";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
-import SectionHeader               from "@/components/ui/SectionHeader";
-import { PROCESS_STEPS }           from "@/lib/data";
+import SectionHeader from "@/components/ui/SectionHeader";
+import TiltCard from "@/components/ui/TiltCard";
+import { PROCESS_STEPS } from "@/lib/data";
 
 export default function Process() {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const active = hovered ?? 0;
+
   return (
-    <section id="process" className="relative z-[1] py-24 px-8 bg-[#060608]">
+    <section id="process" className="relative z-[1] py-28 px-6">
       <div className="max-w-[1100px] mx-auto">
         <FadeUp>
           <SectionHeader
-            label="PROCESS"
-            title="HOW WE WORK"
-            sub="Clean process. No surprises. You always know where your project stands."
+            label="Process"
+            title="How we work"
+            sub="A clean, predictable process. You always know where your project stands."
           />
         </FadeUp>
 
         <div className="relative">
-          {/* Connector line */}
-          <div className="hidden md:block absolute top-[22px] left-[10%] right-[10%] h-px"
-               style={{ background: "linear-gradient(90deg,transparent,#00FFFF,#FF00FF,#00FFFF,transparent)", opacity: 0.3 }} />
+          <div className="hidden md:block absolute top-[27px] left-[8%] right-[8%] h-px bg-line overflow-hidden">
+            <motion.div
+              animate={{ scaleX: (active + 1) / PROCESS_STEPS.length }}
+              transition={{ type: "spring", stiffness: 120, damping: 22 }}
+              className="h-full origin-left"
+              style={{ background: "var(--color-accent)" }}
+            />
+          </div>
 
-          <StaggerGrid className="grid grid-cols-2 md:grid-cols-5 gap-0">
-            {PROCESS_STEPS.map((step) => (
+          <StaggerGrid className="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-4">
+            {PROCESS_STEPS.map((step, i) => (
               <StaggerItem key={step.num}>
-                <div className="px-6 py-8 text-center group">
-                  <div className="w-11 h-11 mx-auto mb-6 flex items-center justify-center font-pixel text-[11px] text-[#00FFFF] bg-[#0D0D12] border border-[#1A1A28] relative z-[1] transition-all duration-300 group-hover:bg-[#00FFFF] group-hover:text-[#060608] group-hover:border-[#00FFFF]">
-                    {step.num}
+                <TiltCard
+                  maxTilt={4}
+                  liftScale={1.03}
+                  className="px-3 py-2 text-center cursor-default rounded-2xl"
+                >
+                  <div
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(null)}
+                    className="px-1"
+                  >
+                    <motion.div
+                      animate={{
+                        scale: i === active ? 1.12 : 1,
+                        backgroundColor: i === active ? "var(--color-accent)" : "var(--color-surface)",
+                        color: i === active ? "var(--color-accent-ink)" : "var(--color-ink)",
+                        borderColor: i === active ? "var(--color-accent)" : "var(--color-line)",
+                      }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="w-11 h-11 mx-auto mb-5 flex items-center justify-center text-[14px] font-semibold rounded-full border relative z-[1]"
+                    >
+                      {step.num}
+                    </motion.div>
+                    <h3
+                      className={`text-[14.5px] font-semibold mb-2 capitalize transition-colors duration-300 ${
+                        i === active ? "text-ink" : "text-subtle"
+                      }`}
+                    >
+                      {step.title.toLowerCase()}
+                    </h3>
+                    <p className="text-[13px] text-subtle leading-6">{step.desc}</p>
                   </div>
-                  <h3 className="font-pixel text-[8px] text-white mb-3 leading-relaxed">{step.title}</h3>
-                  <p className="text-[11px] text-[#555] leading-7">{step.desc}</p>
-                </div>
+                </TiltCard>
               </StaggerItem>
             ))}
           </StaggerGrid>

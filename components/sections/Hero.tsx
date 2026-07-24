@@ -1,172 +1,126 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 import PixelButton from "@/components/ui/PixelButton";
-
-interface PixelShape {
-  size: string;
-  color: string;
-  delay: number;
-  top?: string;
-  left?: string;
-  right?: string;
-  bottom?: string;
-}
-
-const PIXEL_SHAPES: PixelShape[] = [
-  { size: "8px",  color: "#00FFFF", top: "15%",  left: "8%",   delay: 0   },
-  { size: "16px", color: "#FF00FF", top: "25%",  right: "10%", delay: 1   },
-  { size: "6px",  color: "#00FF41", top: "70%",  left: "6%",   delay: 2   },
-  { size: "12px", color: "#FFE600", bottom: "20%", right: "8%", delay: 0.5 },
-  { size: "10px", color: "#00FFFF", top: "80%",  left: "20%",  delay: 1.5 },
-];
+import Counter from "@/components/ui/Counter";
+import CyclingWord from "@/components/ui/CyclingWord";
+import ChipCloud from "@/components/ui/ChipCloud";
+import { SITE } from "@/lib/data";
 
 const STATS = [
-  { num: "10+", label: "PROJECTS SHIPPED" },
-  { num: "3YR", label: "IN THE GAME"      },
+  { value: "15+", label: "Projects shipped" },
+  { value: "98%", label: "Client satisfaction" },
+  { value: "24h", label: "Avg. response time" },
 ];
 
-const containerVariants = {
-  hidden:  {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants = {
-  hidden:  { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as number[] } },
-};
-
-const statVariants = {
-  hidden:  { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1,  transition: { duration: 0.5, ease: "backOut" } },
-};
+const AUDIENCE_WORDS = ["startups.", "founders.", "brands.", "small teams."];
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center text-center px-8 pt-20 pb-16 overflow-hidden z-[1]"
+      className="relative pt-40 pb-24 px-6 overflow-hidden"
     >
-      {/* Watermark */}
-      <span
-        className="absolute font-pixel pointer-events-none select-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap"
-        style={{ fontSize: "clamp(60px,12vw,130px)", color: "#00FFFF", opacity: 0.025 }}
-      >
-        PIXELFORGEX
-      </span>
-
-      {/* Floating pixel shapes */}
-      {PIXEL_SHAPES.map((s, i) => (
-        <motion.span
-          key={i}
-          className="absolute pointer-events-none"
-          style={{
-            width:   s.size,
-            height:  s.size,
-            background: s.color,
-            top:     s.top,
-            left:    s.left,
-            right:   s.right,
-            bottom:  s.bottom,
-          }}
-          animate={{ y: [0, -8, 0], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 4, delay: s.delay, repeat: Infinity, ease: "easeInOut" }}
+      {/* Ambient background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-[-120px] left-[8%] w-[440px] h-[440px] rounded-full opacity-[var(--hero-glow-opacity)] blur-[100px] animate-float"
+          style={{ background: "var(--color-accent)" }}
         />
-      ))}
+        <div
+          className="absolute top-[80px] right-[6%] w-[400px] h-[400px] rounded-full opacity-[var(--hero-glow-opacity)] blur-[100px] animate-float"
+          style={{ background: "var(--color-accent-2)", animationDelay: "1.5s" }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(var(--color-line) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+            maskImage: "radial-gradient(ellipse 55% 60% at 50% 15%, black 30%, transparent 85%)",
+            WebkitMaskImage: "radial-gradient(ellipse 55% 60% at 50% 15%, black 30%, transparent 85%)",
+            opacity: 0.7,
+          }}
+        />
+      </div>
 
-      {/* Main content */}
-      <motion.div
-        className="relative z-[2] max-w-3xl w-full"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Tag */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <span className="inline-block font-pixel text-[7px] text-[#00FF41] border border-[#00FF41] px-4 py-2 tracking-[0.1em]">
-            <span>&gt; </span>CURRENTLY TAKING NEW PROJECTS
-          </span>
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          variants={itemVariants}
-          className="font-pixel leading-relaxed mb-4"
-          style={{ fontSize: "clamp(20px,5vw,44px)" }}
-        >
-          <motion.span
-            className="block text-[#00FFFF]"
-            style={{ textShadow: "0 0 20px rgba(0,255,255,0.5)" }}
-            animate={{
-              textShadow: [
-                "2px 0 #FF00FF, -2px 0 #00FFFF",
-                "-2px 0 #FF00FF,  2px 0 #00FFFF",
-                "2px 0 #FF00FF, -2px 0 #00FFFF",
-              ],
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+        {/* Left: copy */}
+        <div className="text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 mb-8 shadow-softer"
           >
-            PIXELFORGEX.DEV
-          </motion.span>
-          <span className="block text-white mt-3" style={{ fontSize: "0.55em" }}>
-            WE BUILD DIGITAL EXPERIENCES
-          </span>
-          <span
-            className="block text-[#FF00FF] mt-2"
-            style={{ fontSize: "0.5em", textShadow: "0 0 20px rgba(255,0,255,0.5)" }}
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span className="text-[13px] font-medium text-subtle">{SITE.status}</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.05 }}
+            className="font-semibold text-ink tracking-tight leading-[1.05]"
+            style={{ fontSize: "clamp(38px, 5.4vw, 68px)" }}
           >
-            THAT ACTUALLY HIT DIFFERENT
-          </span>
-        </motion.h1>
+            We build digital
+            <br />
+            products for{" "}
+            <CyclingWord words={AUDIENCE_WORDS} />
+          </motion.h1>
 
-        {/* Sub */}
-        <motion.p
-          variants={itemVariants}
-          className="text-[13px] text-[#888] mx-auto mt-8 max-w-lg leading-8"
-        >
-          Full-stack web &amp; app development studio. We forge pixel-perfect,
-          performance-obsessed digital products — from slick landing pages to complex SaaS platforms.
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="mt-6 text-subtle max-w-lg mx-auto lg:mx-0 text-[17px] leading-8"
+          >
+            Pixelforgex is a small studio that plans, designs, and ships web &amp; app
+            products — clean code, thoughtful design, and a team that actually replies.
+          </motion.p>
 
-        {/* Buttons */}
-        <motion.div variants={itemVariants} className="flex gap-6 justify-center flex-wrap mt-10">
-          <PixelButton href="#portfolio" variant="primary">VIEW MY PROJECTS →</PixelButton>
-          <PixelButton href="#contact"   variant="outline">START A PROJECT</PixelButton>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4"
+          >
+            <PixelButton href="#contact">
+              Start a project <ArrowRight size={16} strokeWidth={2} />
+            </PixelButton>
+            <PixelButton href="#portfolio" variant="outline">
+              <Sparkles size={16} strokeWidth={2} /> See our work
+            </PixelButton>
+          </motion.div>
 
-        {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-16 grid grid-cols-3 gap-6 sm:gap-10 max-w-md mx-auto lg:mx-0"
+          >
+            {STATS.map((s) => (
+              <div key={s.label}>
+                <p className="text-[26px] sm:text-[30px] font-semibold text-ink tracking-tight">
+                  <Counter value={s.value} />
+                </p>
+                <p className="text-[13px] text-faint mt-1">{s.label}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right: interactive chip cloud — tech tags that scatter from the cursor */}
         <motion.div
-          className="flex gap-12 justify-center mt-16 flex-wrap"
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.6 } } }}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="hidden lg:block"
         >
-          {STATS.map((s) => (
-            <motion.div key={s.label} variants={statVariants} className="text-center">
-              <span
-                className="block font-pixel text-xl text-[#00FFFF]"
-                style={{ textShadow: "0 0 15px rgba(0,255,255,0.5)" }}
-              >
-                {s.num}
-              </span>
-              <span className="block font-pixel text-[7px] text-[#555] mt-2 tracking-[0.08em]">
-                {s.label}
-              </span>
-            </motion.div>
-          ))}
+          <ChipCloud className="h-[420px] w-full" />
         </motion.div>
-      </motion.div>
-
-      {/* Scroll hint */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-      >
-        <span className="font-pixel text-[7px] text-[#444]">SCROLL</span>
-        <span className="w-px h-8 bg-gradient-to-b from-[#444] to-transparent" />
-      </motion.div>
+      </div>
     </section>
   );
 }

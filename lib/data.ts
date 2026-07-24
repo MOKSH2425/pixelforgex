@@ -15,37 +15,37 @@ export const SITE = {
 // ── SERVICES ──────────────────────────────────────────────────
 export const SERVICES = [
   {
-    num: "01", icon: "🖥️", accent: "#00FFFF",
+    num: "01", icon: "🖥️", accent: "#0A84FF",
     title: "WEB DEVELOPMENT",
     desc:  "Custom websites that are fast, responsive, and built to convert. From portfolio sites to full web applications — pixel-perfect every time.",
     tags:  ["React", "Next.js", "Vue", "Node.js"],
   },
   {
-    num: "02", icon: "📱", accent: "#FF00FF",
+    num: "02", icon: "📱", accent: "#8B5CF6",
     title: "APP DEVELOPMENT",
     desc:  "Native & cross-platform mobile apps that users actually love. iOS, Android, and everything in between — shipped fast, scaled smart.",
     tags:  ["React Native", "Flutter", "Swift", "Kotlin"],
   },
   {
-    num: "03", icon: "🎨", accent: "#00FF41",
+    num: "03", icon: "🎨", accent: "#14B8A6",
     title: "UI/UX DESIGN",
     desc:  "Interfaces that don't just look good — they feel good. We design with users in mind so every interaction makes sense.",
     tags:  ["Figma", "Prototyping", "User Research"],
   },
   {
-    num: "04", icon: "🛒", accent: "#FFE600",
+    num: "04", icon: "🛒", accent: "#E8A33D",
     title: "E-COMMERCE",
     desc:  "Online stores that sell while you sleep. Custom storefronts, smooth checkouts, and backend systems that scale with your growth.",
     tags:  ["Shopify", "WooCommerce", "Custom"],
   },
   {
-    num: "05", icon: "⚡", accent: "#FF6B00",
+    num: "05", icon: "⚡", accent: "#F2725A",
     title: "SAAS PRODUCTS",
     desc:  "Got an idea for a software product? We build end-to-end SaaS platforms — auth, payments, dashboards, APIs. Full stack, fully yours.",
     tags:  ["Stripe", "Auth.js", "REST / GraphQL"],
   },
   {
-    num: "06", icon: "🔧", accent: "#00FFFF",
+    num: "06", icon: "🔧", accent: "#0A84FF",
     title: "MAINTENANCE & SCALE",
     desc:  "Already live but need love? We take over existing codebases, optimize performance, squash bugs, and help you scale to the next level.",
     tags:  ["Audits", "Performance", "DevOps"],
@@ -127,21 +127,21 @@ export const TEAM = [
     name: "DHRUVIN PARMAR",
     role: "APP DEVLOPMENT LEAD",
     bio: "Early in the journey, but strong on fundamentals. Focused on building fast, scalable apps with clean architecture and real-world impact.",
-    avatarPalette: ["#00FFFF", "#0088AA", "#004455", "#001122"],
+    avatarPalette: ["#4F8EF7", "#0A84FF"],
     links: [{ label: "GH", href: "#" }, { label: "LI", href: "#" }, { label: "TW", href: "#" }],
   },
   {
     name: "MOKSH SHAH",
     role: "LEAD UI/UX DESIGNER",
     bio: "New to the field, but design runs deep. Obsessed with user behavior, clean interfaces, and crafting experiences that just feel right.",
-    avatarPalette: ["#FF00FF", "#AA0088", "#550044", "#220011"],
+    avatarPalette: ["#A78BFA", "#8B5CF6"],
     links: [{ label: "BE", href: "#" }, { label: "DR", href: "#" }, { label: "LI", href: "#" }],
   },
   {
     name: "VIRAL KHAMBHATI",
     role: "WEB DEVELOPMENT LEAD",
     bio: "Fresher by experience, sharp by skill. Builds responsive, reliable web solutions with a strong grip on modern development practices.",
-    avatarPalette: ["#00FF41", "#008822", "#004411", "#001100"],
+    avatarPalette: ["#34D399", "#14B8A6"],
     links: [{ label: "GH", href: "#" }, { label: "PH", href: "#" }, { label: "LI", href: "#" }],
   },
 ] as const;
@@ -176,11 +176,11 @@ export const TICKER_ITEMS = [
 // ── NAV LINKS ─────────────────────────────────────────────────
 export const NAV_LINKS = [
   { label: "Services",     href: "#services"  },
-  { label: "Projects",     href: "#portfolio" },
+  { label: "Work",         href: "#portfolio" },
   { label: "About",        href: "#about"     },
   { label: "Team",         href: "#team"      },
+  { label: "Case Studies", href: "/work"      },
   { label: "Contact",      href: "#contact"   },
-  { label: "My Projects",  href: "/work"      },
 ] as const;
 
 // ── FOOTER COLUMNS ────────────────────────────────────────────

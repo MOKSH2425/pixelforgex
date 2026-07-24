@@ -1,41 +1,66 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { NAV_LINKS } from "@/lib/data";
 import Logo from "@/components/ui/Logo";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import PixelButton from "@/components/ui/PixelButton";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 24);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between px-10 h-16 border-b border-[#1A1A28]"
-         style={{ background: "rgba(6,6,8,0.92)", backdropFilter: "blur(12px)" }}>
-
-      {/* Logo */}
-      <Link href="#hero" className="no-underline">
-        <Logo />
-      </Link>
-
-      {/* Links */}
-      <ul className="hidden md:flex gap-8 list-none">
-        {NAV_LINKS.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="font-pixel text-[7px] text-[#666] no-underline tracking-[0.08em] hover:text-[#00FFFF] transition-colors duration-200 relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 right-0 h-px bg-[#00FFFF] scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/* CTA */}
-      <Link
-        href="#contact"
-        className="font-pixel text-[7px] text-[#060608] bg-[#00FFFF] px-[14px] py-2 tracking-[0.05em] clip-skew-sm hover:bg-[#FF00FF] transition-colors duration-200"
+    <div className="fixed top-0 left-0 right-0 z-[1000] flex justify-center px-4 pt-4">
+      <motion.nav
+        animate={{
+          width: scrolled ? "min(880px, 94vw)" : "min(1040px, 96vw)",
+          height: scrolled ? 56 : 64,
+        }}
+        transition={{ type: "spring", stiffness: 260, damping: 28 }}
+        className="flex items-center justify-between px-5 md:px-7 rounded-full border border-line"
+        style={{
+          background: "var(--color-surface)",
+          opacity: 0.85,
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          boxShadow: scrolled
+            ? "0 8px 30px -8px rgba(0,0,0,0.16)"
+            : "0 2px 12px -4px rgba(0,0,0,0.06)",
+        }}
       >
-        GET IN TOUCH
-      </Link>
-    </nav>
+        <Logo />
+
+        <ul className="hidden md:flex items-center gap-7 list-none">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="text-[14px] font-medium text-subtle no-underline hover:text-ink transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-3">
+          <ThemeToggle className="hidden sm:inline-flex" />
+          <PixelButton href="#contact" className="!py-2 !px-[18px] !text-[13.5px]">
+            Get in touch
+          </PixelButton>
+        </div>
+      </motion.nav>
+    </div>
   );
 }

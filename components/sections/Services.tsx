@@ -1,67 +1,82 @@
-import SectionHeader              from "@/components/ui/SectionHeader";
-import FadeUp                     from "@/components/ui/FadeUp";
+import { SERVICES } from "@/lib/data";
+import SectionHeader from "@/components/ui/SectionHeader";
+import FadeUp from "@/components/ui/FadeUp";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
-import { SERVICES }               from "@/lib/data";
+import TiltCard from "@/components/ui/TiltCard";
+import { ArrowUpRight } from "lucide-react";
+
+// Bento spans per card index — creates an asymmetric, magazine-style grid.
+const SPANS = [
+  "lg:col-span-2",
+  "lg:row-span-2",
+  "",
+  "",
+  "lg:col-span-2",
+  "",
+];
 
 export default function Services() {
   return (
-    <section id="services" className="relative z-[1] py-24 px-8 bg-[#060608]">
-      <div className="max-w-[1100px] mx-auto">
-        <FadeUp>
-          <SectionHeader
-            label="SERVICES"
-            title="WHAT WE BUILD"
-            sub="From concept to code to launch — we cover the full stack so you don't have to."
-          />
-        </FadeUp>
+    <section id="services" className="py-28 px-6 max-w-[1100px] mx-auto">
+      <FadeUp>
+        <SectionHeader
+          label="What we do"
+          title="Services built around your product, not our template."
+          sub="Every engagement starts with your goals — not a checklist. Pick what you need, skip what you don't."
+        />
+      </FadeUp>
 
-        <StaggerGrid
-          className="grid gap-[1.5px] bg-[#1A1A28] border border-[#1A1A28]"
-          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}
-        >
-          {SERVICES.map((svc, i) => (
-            <StaggerItem key={svc.num}>
-              <div
-                className="relative bg-[#0D0D12] p-10 overflow-hidden group transition-colors duration-300 hover:bg-[#12121A] h-full"
-                style={{ color: svc.accent }}
+      <StaggerGrid
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 [grid-auto-flow:dense] lg:auto-rows-[210px]"
+      >
+        {SERVICES.map((svc, i) => {
+          const big = SPANS[i]?.includes("col-span-2") || SPANS[i]?.includes("row-span-2");
+          return (
+            <StaggerItem key={svc.num} className={SPANS[i] ?? ""}>
+              <TiltCard
+                maxTilt={5}
+                className="card p-7 h-full flex flex-col justify-between rounded-[20px] overflow-hidden"
               >
-                {/* Bottom reveal accent */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                  aria-hidden
+                  className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-[0.15]"
                   style={{ background: svc.accent }}
                 />
 
-                {/* Card number */}
-                <span className="absolute top-6 right-6 font-pixel text-[8px] text-[#1A1A28] group-hover:text-current transition-colors duration-300">
-                  {svc.num}
-                </span>
-
-                {/* Icon */}
-                <span
-                  className="block text-3xl mb-6 transition-transform duration-300 group-hover:scale-110"
-                  style={{ animationDelay: `${i * 0.3}s`, filter: `drop-shadow(0 0 8px ${svc.accent})` }}
-                >
-                  {svc.icon}
-                </span>
-
-                <h3 className="font-pixel text-[10px] text-white mb-4 leading-relaxed">{svc.title}</h3>
-                <p className="text-[12px] text-[#666] leading-8 mb-6">{svc.desc}</p>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {svc.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-pixel text-[6px] text-[#555] border border-[#222] px-2 py-1 tracking-wide group-hover:border-current group-hover:text-current transition-all duration-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="relative">
+                  <div
+                    className={`flex items-center justify-center rounded-2xl mb-6 ${big ? "w-14 h-14 text-[26px]" : "w-12 h-12 text-[22px]"}`}
+                    style={{ background: `${svc.accent}18` }}
+                  >
+                    {svc.icon}
+                  </div>
+                  <h3 className={`font-semibold text-ink tracking-tight mb-2 capitalize ${big ? "text-[19px]" : "text-[17px]"}`}>
+                    {svc.title.toLowerCase()}
+                  </h3>
+                  <p className="text-[14.5px] text-subtle leading-6 mb-5">{svc.desc}</p>
                 </div>
-              </div>
+
+                <div className="relative flex items-end justify-between gap-3">
+                  <div className="flex flex-wrap gap-2">
+                    {svc.tags.slice(0, big ? svc.tags.length : 2).map((t) => (
+                      <span
+                        key={t}
+                        className="text-[12px] font-medium text-subtle bg-surface-2 border border-line rounded-full px-2.5 py-1"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <ArrowUpRight
+                    size={18}
+                    className="text-accent flex-shrink-0 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300"
+                  />
+                </div>
+              </TiltCard>
             </StaggerItem>
-          ))}
-        </StaggerGrid>
-      </div>
+          );
+        })}
+      </StaggerGrid>
     </section>
   );
 }

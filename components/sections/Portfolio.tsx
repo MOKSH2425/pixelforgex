@@ -1,11 +1,13 @@
 "use client";
 
-import { useState }               from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import FadeUp                     from "@/components/ui/FadeUp";
-import SectionHeader              from "@/components/ui/SectionHeader";
-import { PROJECTS }               from "@/lib/data";
-import Link                       from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import FadeUp from "@/components/ui/FadeUp";
+import SectionHeader from "@/components/ui/SectionHeader";
+import TiltCard from "@/components/ui/TiltCard";
+import { PROJECTS } from "@/lib/data";
+import Link from "next/link";
 
 const FILTERS = ["ALL", "WEB", "APP", "E-COM", "SAAS"] as const;
 type Filter = (typeof FILTERS)[number];
@@ -18,110 +20,91 @@ export default function Portfolio() {
   );
 
   return (
-    <section id="portfolio" className="relative z-[1] py-24 px-8 bg-[#12121A]">
+    <section id="portfolio" className="relative z-[1] py-28 px-6 bg-surface-2">
       <div className="max-w-[1100px] mx-auto">
         <FadeUp>
           <SectionHeader
-            label="PROJECTS"
-            title="MY PROJECTS"
-            sub="A growing collection of real builds. Each project is shaped around clear goals, clean execution, and a polished user experience."
+            label="Selected work"
+            title="A few projects we're proud of."
+            sub="Real client builds — each one shaped around clear goals, clean execution, and a polished user experience."
           />
         </FadeUp>
 
-        {/* Filter buttons */}
         <FadeUp delay={0.1}>
-          <div className="flex gap-3 flex-wrap mb-10">
+          <div className="flex gap-2 flex-wrap mb-10">
             {FILTERS.map((f) => (
               <button
                 key={f}
                 onClick={() => setActive(f)}
-                className={`font-pixel text-[7px] border px-[14px] py-2 tracking-[0.05em] cursor-pointer transition-all duration-200 relative ${
+                className={`text-[13px] font-medium rounded-full px-4 py-2 cursor-pointer transition-all duration-200 border ${
                   active === f
-                    ? "text-[#00FFFF] border-[#00FFFF]"
-                    : "text-[#555] border-[#222] hover:text-[#00FFFF] hover:border-[#00FFFF]"
+                    ? "text-accent-ink bg-accent border-accent"
+                    : "text-subtle border-line hover:border-faint hover:text-ink"
                 }`}
               >
                 {f}
-                {active === f && (
-                  <motion.span
-                    layoutId="filter-underline"
-                    className="absolute -bottom-px left-0 right-0 h-px bg-[#00FFFF]"
-                  />
-                )}
               </button>
             ))}
           </div>
         </FadeUp>
 
-        {/* Grid */}
         <motion.div
           layout
           className="grid gap-6"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))" }}
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(310px, 1fr))" }}
         >
           <AnimatePresence mode="popLayout">
             {visible.map((proj) => (
               <motion.div
                 key={proj.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35, ease: [0.25,0.1,0.25,1] }}
-                className="bg-[#0D0D12] border border-[#1A1A28] overflow-hidden cursor-pointer group transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(255,0,255,0.4)]"
-                whileHover={{ y: -6 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                {/* Thumb */}
-                <div
-                  className="h-[200px] flex items-center justify-center relative overflow-hidden"
-                  style={{ background: `linear-gradient(135deg, ${proj.bgFrom}, ${proj.bgTo})` }}
-                >
+                <TiltCard maxTilt={5} className="card overflow-hidden rounded-[20px] hover:shadow-soft transition-shadow duration-300">
+                <Link href={`/work/${proj.id}`} className="block">
                   <div
-                    className="w-[180px] h-[120px] border-2 flex flex-col gap-1.5 p-3"
-                    style={{ borderColor: `${proj.color}4D` }}
+                    className="h-[180px] flex items-center justify-center relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${proj.color}22, var(--color-surface-2))` }}
                   >
-                    <div className="h-1.5 w-[60%]" style={{ background: `${proj.color}80` }} />
-                    <div className="h-1 w-4/5 bg-white/10" />
-                    <div className="h-1 w-1/2 bg-white/10" />
-                    <div className="grid grid-cols-2 gap-1 mt-1">
-                      <div className="h-7" style={{ background: `${proj.color}26` }} />
-                      <div className="h-7 bg-white/5" />
+                    <div
+                      className="w-[160px] h-[110px] rounded-xl border flex flex-col gap-1.5 p-3 bg-surface"
+                      style={{ borderColor: `${proj.color}55` }}
+                    >
+                      <div className="h-1.5 w-[55%] rounded-full" style={{ background: proj.color }} />
+                      <div className="h-1 w-4/5 rounded-full bg-line" />
+                      <div className="h-1 w-1/2 rounded-full bg-line" />
+                      <div className="grid grid-cols-2 gap-1 mt-1">
+                        <div className="h-6 rounded-md" style={{ background: `${proj.color}30` }} />
+                        <div className="h-6 rounded-md bg-line" />
+                      </div>
+                    </div>
+
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface shadow-softer flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <ArrowUpRight size={15} className="text-ink" />
                     </div>
                   </div>
 
-                  {/* Overlay on hover */}
-                  <motion.div
-                    className="absolute inset-0 flex items-center justify-center"
-                    style={{ background: "rgba(6,6,8,0.75)" }}
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    <Link
-                      href={`/work/${proj.id}`}
-                      className="font-pixel text-[8px] text-[#00FFFF] border border-[#00FFFF] px-4 py-2 hover:bg-[#00FFFF] hover:text-[#060608] transition-all duration-200"
-                    >
-                      VIEW PROJECT →
-                    </Link>
-                  </motion.div>
-                </div>
-
-                {/* Info */}
-                <div className="p-6">
-                  <p className="font-pixel text-[6px] text-[#FF00FF] tracking-[0.1em] mb-2">{proj.category}</p>
-                  <h3 className="font-pixel text-[9px] text-white leading-relaxed mb-2">{proj.name}</h3>
-                  <p className="text-[11px] text-[#666] leading-relaxed">{proj.desc}</p>
-                </div>
-
-                <div className="flex items-center justify-between px-6 py-3 border-t border-[#1A1A28]">
-                  <div className="flex gap-1.5">
-                    {proj.techColors.map((c, i) => (
-                      <span key={i} className="w-1.5 h-1.5" style={{ background: c }} />
-                    ))}
+                  <div className="p-6">
+                    <p className="eyebrow text-[11px] mb-2 normal-case tracking-normal">{proj.category}</p>
+                    <h3 className="text-[16px] font-semibold text-ink leading-snug mb-2">{proj.name}</h3>
+                    <p className="text-[13.5px] text-subtle leading-6">{proj.desc}</p>
                   </div>
-                  <span className="font-pixel text-[7px] text-[#00FFFF] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    VIEW →
-                  </span>
-                </div>
+
+                  <div className="flex items-center justify-between px-6 py-3.5 border-t border-line">
+                    <div className="flex gap-1.5">
+                      {proj.techColors.map((c, i) => (
+                        <span key={i} className="w-2 h-2 rounded-full" style={{ background: c }} />
+                      ))}
+                    </div>
+                    <span className="text-[13px] font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      View project →
+                    </span>
+                  </div>
+                </Link>
+                </TiltCard>
               </motion.div>
             ))}
           </AnimatePresence>

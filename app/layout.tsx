@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import CursorGlow from "@/components/ui/CursorGlow";
+import { ThemeProvider, themeInitScript } from "@/lib/theme";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "PIXELFORGEX.DEV — Web & App Development Studio",
+  title: "Pixelforgex — Web & App Development Studio",
   description:
-    "Full-stack web and app development studio. We build pixel-perfect, performance-obsessed digital products for startups, SMBs, and brands that care about quality.",
+    "Full-stack web and app development studio. We build clean, performance-obsessed digital products for startups, SMBs, and brands that care about quality.",
   keywords: [
     "web development",
     "app development",
@@ -17,8 +26,8 @@ export const metadata: Metadata = {
     "India",
   ],
   openGraph: {
-    title: "PIXELFORGEX.DEV",
-    description: "We forge digital experiences that actually hit different.",
+    title: "Pixelforgex",
+    description: "We build digital experiences that actually work well.",
     type: "website",
   },
 };
@@ -27,17 +36,21 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="antialiased">
-        {children}
+    <html lang="en" className={`scroll-smooth ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="antialiased font-sans bg-bg text-ink">
+        <ThemeProvider>
+          <CursorGlow />
+          {children}
 
-        {/* ── WhatsApp floating button ── */}
-        {/* Replace 919876543210 with your real number: 91 + your 10-digit mobile */}
-        {/* Example: 919824000000 for +91 98240 00000 */}
-        <WhatsAppButton
-          phoneNumber="916353444388"
-          message="Hi! I visited pixelforgex.dev and I'd like to discuss a project."
-        />
+          {/* Replace 919876543210 with your real number: 91 + your 10-digit mobile */}
+          <WhatsAppButton
+            phoneNumber="916353444388"
+            message="Hi! I visited pixelforgex.dev and I'd like to discuss a project."
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

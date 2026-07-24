@@ -7,45 +7,35 @@ interface PixelAvatarProps {
   seed: string;
 }
 
-function seededRand(seed: string, index: number): number {
+function seededHash(seed: string): number {
   let hash = 0;
-  const str = seed + index;
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i);
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash << 5) - hash + seed.charCodeAt(i);
     hash |= 0;
   }
   return Math.abs(hash);
 }
 
-export default function PixelAvatar({ palette, seed }: PixelAvatarProps) {
-  const colors = useMemo(() => {
-    const allColors = ["transparent", ...palette];
-    const grid: string[] = new Array(64);
+function initials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return parts.slice(0, 2).map((p) => p[0]).join("").toUpperCase();
+}
 
-    for (let row = 0; row < 8; row++) {
-      for (let col = 0; col < 4; col++) {
-        const idx = row * 8 + col;
-        const v = seededRand(seed, idx) % allColors.length;
-        const color = allColors[v];
-        grid[row * 8 + col] = color;
-        grid[row * 8 + (7 - col)] = color; // mirror
-      }
-    }
-    return grid;
+/** Kept the filename/props to avoid touching Team.tsx; now renders a soft gradient avatar with initials. */
+export default function PixelAvatar({ palette, seed }: PixelAvatarProps) {
+  const { from, to } = useMemo(() => {
+    const hash = seededHash(seed);
+    const a = palette[hash % palette.length];
+    const b = palette[(hash + 1) % palette.length];
+    return { from: a, to: b };
   }, [palette, seed]);
 
   return (
     <div
-      className="w-20 h-20 border-2 border-[#1A1A28] overflow-hidden"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(8, 1fr)",
-        imageRendering: "pixelated",
-      }}
+      className="w-20 h-20 rounded-full flex items-center justify-center text-white font-semibold text-lg shadow-soft"
+      style={{ background: `linear-gradient(135deg, ${from}, ${to})` }}
     >
-      {colors.map((color, i) => (
-        <span key={i} className="block aspect-square" style={{ background: color }} />
-      ))}
+      {initials(seed)}
     </div>
   );
 }
