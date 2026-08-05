@@ -29,10 +29,30 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     shortcut: "/logo.png",
   },
+};
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pixelforgex.dev";
+
+export const defaultMetadata: Metadata = {
   openGraph: {
     title: "Pixelforgex",
     description: "We build digital experiences that actually work well.",
     type: "website",
+    url: SITE_URL,
+    siteName: "Pixelforgex",
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Pixelforgex — Web & App Development Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pixelforgex",
+    description: "We build digital experiences that actually work well.",
   },
 };
 
