@@ -77,10 +77,32 @@ export default function About() {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#34D399]" />
               </div>
               <pre className="whitespace-pre-wrap break-words text-sm">
-                <code>
-                  {`const stack = {
-${STACK_GROUPS.map((g) => `  ${g.label.toLowerCase()}: [${g.items.map((item) => `"${item}"`).join(", ")}],`).join("\n")}
-};`}
+                <code className="block">
+                  <div>
+                    <span className="text-emerald-400">const</span>{" "}
+                    <span className="text-ink">stack</span>{" "}
+                    <span className="text-faint">=</span>{" "}
+                    <span className="text-fg">{`{`}</span>
+                  </div>
+                  {STACK_GROUPS.map((g) => (
+                    <div key={g.label} className="pl-2">
+                      <span className="text-violet-300">
+                        {g.label.toLowerCase()}
+                      </span>
+                      <span className="text-faint">: </span>
+                      <span className="text-fg">[</span>
+                      {g.items.map((item, idx) => (
+                        <span key={item} className="text-green-300">
+                          {`"${item}"`}
+                          {idx < g.items.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                      <span className="text-fg">],</span>
+                    </div>
+                  ))}
+                  <div>
+                    <span className="text-fg">{`};`}</span>
+                  </div>
                 </code>
               </pre>
             </div>
