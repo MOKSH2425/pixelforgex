@@ -17,28 +17,30 @@ export default function Team() {
           />
         </FadeUp>
 
-        <StaggerGrid className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGrid className="grid gap-6 items-stretch grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM.map((member) => (
             <StaggerItem key={member.name}>
               <TiltCard
                 maxTilt={6}
                 className="card px-6 py-8 text-center hover:shadow-soft transition-shadow duration-300 h-full"
               >
-                <div className="flex justify-center mb-5">
-                  <PixelAvatar
-                    palette={member.avatarPalette}
-                    seed={member.name}
-                  />
+                <div className="flex flex-col h-full">
+                  <div className="flex justify-center mb-5">
+                    <PixelAvatar
+                      palette={member.avatarPalette}
+                      seed={member.name}
+                    />
+                  </div>
+                  <h3 className="text-[16px] font-semibold text-ink mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-[13px] font-medium text-accent mb-3">
+                    {member.role}
+                  </p>
+                  <p className="text-[13.5px] text-subtle leading-6 mt-auto">
+                    {member.bio}
+                  </p>
                 </div>
-                <h3 className="text-[16px] font-semibold text-ink mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-[13px] font-medium text-accent mb-3">
-                  {member.role}
-                </p>
-                <p className="text-[13.5px] text-subtle leading-6">
-                  {member.bio}
-                </p>
               </TiltCard>
             </StaggerItem>
           ))}

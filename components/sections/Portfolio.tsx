@@ -69,7 +69,10 @@ export default function Portfolio() {
                   maxTilt={5}
                   className="card overflow-hidden rounded-[20px] hover:shadow-soft transition-shadow duration-300 h-full"
                 >
-                  <Link href={`/work/${proj.id}`} className="block h-full">
+                  <Link
+                    href={`/work/${proj.id}`}
+                    className="group block h-full"
+                  >
                     <div
                       className="h-[180px] flex items-center justify-center relative overflow-hidden"
                       style={{
