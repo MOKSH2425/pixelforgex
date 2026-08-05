@@ -102,7 +102,7 @@ export default function Contact() {
                   <input
                     {...register("name", { required: "Name is required", minLength: { value: 2, message: "Too short" } })}
                     type="text"
-                    placeholder="Jane Doe"
+                    placeholder="Your Name"
                     className={fieldClass(!!errors.name)}
                   />
                   {errors.name && <span className="text-[12.5px] text-red-500 mt-1 block">{errors.name.message}</span>}
@@ -115,7 +115,7 @@ export default function Contact() {
                       pattern: { value: /^\S+@\S+\.\S+$/, message: "Invalid email" },
                     })}
                     type="email"
-                    placeholder="jane@company.com"
+                    placeholder="your.email@company.com"
                     className={fieldClass(!!errors.email)}
                   />
                   {errors.email && <span className="text-[12.5px] text-red-500 mt-1 block">{errors.email.message}</span>}

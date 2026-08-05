@@ -25,6 +25,10 @@ export const metadata: Metadata = {
     "SaaS",
     "India",
   ],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+  },
   openGraph: {
     title: "Pixelforgex",
     description: "We build digital experiences that actually work well.",
@@ -36,7 +40,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

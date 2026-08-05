@@ -18,10 +18,7 @@ const AUDIENCE_WORDS = ["startups.", "founders.", "brands.", "small teams."];
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative pt-40 pb-24 px-6 overflow-hidden"
-    >
+    <section id="hero" className="relative pt-40 pb-24 px-6 overflow-hidden">
       {/* Ambient background */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <div
@@ -30,15 +27,21 @@ export default function Hero() {
         />
         <div
           className="absolute top-[80px] right-[6%] w-[400px] h-[400px] rounded-full opacity-[var(--hero-glow-opacity)] blur-[100px] animate-float"
-          style={{ background: "var(--color-accent-2)", animationDelay: "1.5s" }}
+          style={{
+            background: "var(--color-accent-2)",
+            animationDelay: "1.5s",
+          }}
         />
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(var(--color-line) 1px, transparent 1px)",
+            backgroundImage:
+              "radial-gradient(var(--color-line) 1px, transparent 1px)",
             backgroundSize: "26px 26px",
-            maskImage: "radial-gradient(ellipse 55% 60% at 50% 15%, black 30%, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(ellipse 55% 60% at 50% 15%, black 30%, transparent 85%)",
+            maskImage:
+              "radial-gradient(ellipse 55% 60% at 50% 15%, black 30%, transparent 85%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 55% 60% at 50% 15%, black 30%, transparent 85%)",
             opacity: 0.7,
           }}
         />
@@ -54,7 +57,9 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 mb-8 shadow-softer"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="text-[13px] font-medium text-subtle">{SITE.status}</span>
+            <span className="text-[13px] font-medium text-subtle">
+              {SITE.status}
+            </span>
           </motion.div>
 
           <motion.h1
@@ -66,8 +71,7 @@ export default function Hero() {
           >
             We build digital
             <br />
-            products for{" "}
-            <CyclingWord words={AUDIENCE_WORDS} />
+            products for <CyclingWord words={AUDIENCE_WORDS} />
           </motion.h1>
 
           <motion.p
@@ -76,8 +80,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-6 text-subtle max-w-lg mx-auto lg:mx-0 text-[17px] leading-8"
           >
-            Pixelforgex is a small studio that plans, designs, and ships web &amp; app
-            products — clean code, thoughtful design, and a team that actually replies.
+            Pixelforgex is a small studio that plans, designs, and ships web
+            &amp; app products — clean code, thoughtful design, and a team that
+            actually replies.
           </motion.p>
 
           <motion.div
@@ -86,10 +91,10 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4"
           >
-            <PixelButton href="#contact">
+            <PixelButton href="/#contact">
               Start a project <ArrowRight size={16} strokeWidth={2} />
             </PixelButton>
-            <PixelButton href="#portfolio" variant="outline">
+            <PixelButton href="/#portfolio" variant="outline">
               <Sparkles size={16} strokeWidth={2} /> See our work
             </PixelButton>
           </motion.div>

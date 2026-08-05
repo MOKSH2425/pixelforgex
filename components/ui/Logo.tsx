@@ -1,13 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Logo({ className }: { className?: string }) {
   return (
-    <Link href="#hero" className={`inline-flex items-center gap-2.5 no-underline group ${className ?? ""}`}>
-      <span className="w-8 h-8 rounded-[9px] bg-ink flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-hover:scale-105">
-        <span className="text-bg font-semibold text-[15px] tracking-tight">P</span>
+    <Link
+      href="/"
+      className={`inline-flex items-center gap-3 no-underline group ${className ?? ""}`}
+    >
+      <span className="relative w-10 h-10 rounded-[13px] overflow-hidden bg-surface border border-line flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+        <Image
+          src="/logo.png"
+          alt="PixelForgeX logo"
+          fill
+          className="object-contain"
+        />
       </span>
       <span className="font-semibold text-[17px] tracking-tight text-ink">
-        Pixelforgex
+        PixelForgeX
       </span>
     </Link>
   );

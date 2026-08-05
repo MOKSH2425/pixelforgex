@@ -56,7 +56,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle className="hidden sm:inline-flex" />
-          <PixelButton href="#contact" className="!py-2 !px-[18px] !text-[13.5px]">
+          <PixelButton
+            href="/#contact"
+            className="!py-2 !px-[18px] !text-[13.5px]"
+          >
             Get in touch
           </PixelButton>
         </div>

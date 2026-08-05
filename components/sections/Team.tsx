@@ -22,14 +22,23 @@ export default function Team() {
             <StaggerItem key={member.name}>
               <TiltCard
                 maxTilt={6}
-                className="card px-6 py-8 text-center hover:shadow-soft transition-shadow duration-300"
+                className="card px-6 py-8 text-center hover:shadow-soft transition-shadow duration-300 h-full"
               >
                 <div className="flex justify-center mb-5">
-                  <PixelAvatar palette={member.avatarPalette} seed={member.name} />
+                  <PixelAvatar
+                    palette={member.avatarPalette}
+                    seed={member.name}
+                  />
                 </div>
-                <h3 className="text-[16px] font-semibold text-ink mb-1">{member.name}</h3>
-                <p className="text-[13px] font-medium text-accent mb-3">{member.role}</p>
-                <p className="text-[13.5px] text-subtle leading-6">{member.bio}</p>
+                <h3 className="text-[16px] font-semibold text-ink mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-[13px] font-medium text-accent mb-3">
+                  {member.role}
+                </p>
+                <p className="text-[13.5px] text-subtle leading-6">
+                  {member.bio}
+                </p>
               </TiltCard>
             </StaggerItem>
           ))}
