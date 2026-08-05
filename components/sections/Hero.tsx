@@ -18,7 +18,7 @@ const AUDIENCE_WORDS = ["startups.", "founders.", "brands.", "small teams."];
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative pt-40 pb-24 px-6 overflow-hidden">
+    <section id="hero" className="relative pt-44 pb-28 px-6 overflow-hidden">
       {/* Ambient background */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <div
@@ -66,7 +66,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="font-semibold text-ink tracking-tight leading-[1.05]"
+            className="font-semibold text-ink tracking-tight leading-[1.02] max-w-[55ch]"
             style={{ fontSize: "clamp(38px, 5.4vw, 68px)" }}
           >
             We build digital
@@ -89,12 +89,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4"
+            className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-4"
           >
-            <PixelButton href="/#contact">
+            <PixelButton href="/#contact" className="px-6 py-3 text-lg">
               Start a project <ArrowRight size={16} strokeWidth={2} />
             </PixelButton>
-            <PixelButton href="/#portfolio" variant="outline">
+            <PixelButton
+              href="/#portfolio"
+              variant="outline"
+              className="px-4 py-2 text-sm"
+            >
               <Sparkles size={16} strokeWidth={2} /> See our work
             </PixelButton>
           </motion.div>
@@ -123,7 +127,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="hidden lg:block"
         >
-          <ChipCloud className="h-[420px] w-full" />
+          <div className="relative">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-black/5 to-transparent pointer-events-none" />
+            <ChipCloud className="h-[480px] w-full" />
+          </div>
         </motion.div>
       </div>
     </section>

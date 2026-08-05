@@ -20,7 +20,7 @@ const STACK_GROUPS = [
 
 export default function About() {
   return (
-    <section id="about" className="relative z-[1] py-28 px-6">
+    <section id="about" className="relative z-[1] py-32 px-6">
       <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div>
           <FadeUp>
@@ -70,13 +70,13 @@ export default function About() {
               </span>
             </div>
 
-            <div className="rounded-[24px] border border-line bg-[#090B12] p-5 font-mono text-[14px] leading-7 text-subtle overflow-x-auto">
+            <div className="rounded-2xl border border-line bg-[#07080c] p-6 font-mono text-[13px] leading-6 text-subtle overflow-x-auto shadow-sm">
               <div className="mb-4 flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#EF4444]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#F59E0B]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#34D399]" />
               </div>
-              <pre className="whitespace-pre-wrap">
+              <pre className="whitespace-pre-wrap break-words text-sm">
                 <code>
                   {`const stack = {
 ${STACK_GROUPS.map((g) => `  ${g.label.toLowerCase()}: [${g.items.map((item) => `"${item}"`).join(", ")}],`).join("\n")}
