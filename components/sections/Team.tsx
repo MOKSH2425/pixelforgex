@@ -22,7 +22,7 @@ export default function Team() {
             <StaggerItem key={member.name}>
               <TiltCard
                 maxTilt={6}
-                className="card px-6 py-8 text-center hover:shadow-soft transition-shadow duration-300 h-full"
+                className="card px-4 py-6 sm:px-6 sm:py-8 text-center hover:shadow-soft transition-shadow duration-300 h-full"
               >
                 <div className="flex flex-col h-full">
                   <div className="flex justify-center mb-5">

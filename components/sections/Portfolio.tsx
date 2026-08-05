@@ -103,7 +103,7 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    <div className="flex h-full flex-col p-6">
+                    <div className="flex h-full flex-col p-4 sm:p-6">
                       <div>
                         <p className="eyebrow text-[11px] mb-2 normal-case tracking-normal">
                           {proj.category}

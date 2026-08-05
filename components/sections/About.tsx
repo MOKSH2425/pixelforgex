@@ -62,7 +62,7 @@ export default function About() {
         </div>
 
         <FadeUp delay={0.15}>
-          <div className="card p-7">
+          <div className="card p-6 sm:p-7">
             <div className="mb-5 flex items-center justify-between gap-3">
               <p className="eyebrow">Our stack</p>
               <span className="text-[12px] text-faint uppercase tracking-[0.18em]">
@@ -70,7 +70,7 @@ export default function About() {
               </span>
             </div>
 
-            <div className="rounded-2xl border border-line bg-[#07080c] p-6 font-mono text-[13px] leading-6 text-subtle overflow-x-auto shadow-sm">
+            <div className="rounded-2xl border border-line bg-[#07080c] p-4 sm:p-6 font-mono text-[13px] leading-6 text-subtle overflow-x-auto shadow-sm">
               <div className="mb-4 flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#EF4444]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#F59E0B]" />

@@ -66,13 +66,34 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="font-semibold text-ink tracking-tight leading-[1.02] max-w-[55ch]"
+            className="font-semibold text-ink tracking-tight leading-[1.02] max-w-[55ch] mx-auto lg:mx-0"
             style={{ fontSize: "clamp(38px, 5.4vw, 68px)" }}
           >
             We build digital
             <br />
             products for <CyclingWord words={AUDIENCE_WORDS} />
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4"
+          >
+            <PixelButton
+              href="/#contact"
+              className="w-full sm:w-auto px-6 py-3 text-lg"
+            >
+              Start a project <ArrowRight size={16} strokeWidth={2} />
+            </PixelButton>
+            <PixelButton
+              href="/#portfolio"
+              variant="outline"
+              className="w-full sm:w-auto px-4 py-2 text-sm mt-3 sm:mt-0"
+            >
+              <Sparkles size={16} strokeWidth={2} /> See our work
+            </PixelButton>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -84,24 +105,6 @@ export default function Hero() {
             &amp; app products — clean code, thoughtful design, and a team that
             actually replies.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-4"
-          >
-            <PixelButton href="/#contact" className="px-6 py-3 text-lg">
-              Start a project <ArrowRight size={16} strokeWidth={2} />
-            </PixelButton>
-            <PixelButton
-              href="/#portfolio"
-              variant="outline"
-              className="px-4 py-2 text-sm"
-            >
-              <Sparkles size={16} strokeWidth={2} /> See our work
-            </PixelButton>
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
