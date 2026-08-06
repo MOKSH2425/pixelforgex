@@ -332,8 +332,8 @@ export const FOOTER_COLUMNS = [
   {
     title: "LEGAL",
     links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
+      { label: "Privacy Policy", href: "/legal/privacy" },
+      { label: "Terms of Service", href: "/legal/terms" },
     ],
   },
 ] as const;

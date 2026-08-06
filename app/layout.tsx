@@ -12,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pixelforgex.dev"),
   title: "Pixelforgex — Web & App Development Studio",
   description:
     "Full-stack web and app development studio. We build clean, performance-obsessed digital products for startups, SMBs, and brands that care about quality.",
