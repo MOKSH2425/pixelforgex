@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import PixelButton from "@/components/ui/PixelButton";
 import Counter from "@/components/ui/Counter";
-import CyclingWord from "@/components/ui/CyclingWord";
 import ChipCloud from "@/components/ui/ChipCloud";
 import { SITE } from "@/lib/data";
 
@@ -13,8 +12,6 @@ const STATS = [
   { value: "98%", label: "Client satisfaction" },
   { value: "24h", label: "Avg. response time" },
 ];
-
-const AUDIENCE_WORDS = ["startups.", "founders.", "brands.", "small teams."];
 
 export default function Hero() {
   return (
@@ -56,8 +53,8 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 mb-8 shadow-softer"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="text-[13px] font-medium text-subtle">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-mono text-[12.5px] font-medium text-subtle tracking-tight">
               {SITE.status}
             </span>
           </motion.div>
@@ -66,12 +63,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="font-semibold text-ink tracking-tight leading-[1.02] max-w-[55ch] mx-auto lg:mx-0"
+            className="font-display font-semibold text-ink tracking-tight leading-[1.02] max-w-[55ch] mx-auto lg:mx-0"
             style={{ fontSize: "clamp(38px, 5.4vw, 68px)" }}
           >
-            We build digital
+            We ship products,
             <br />
-            products for <CyclingWord words={AUDIENCE_WORDS} />
+            not proposals.
           </motion.h1>
 
           <motion.div
@@ -101,9 +98,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-6 text-subtle max-w-lg mx-auto lg:mx-0 text-[17px] leading-8"
           >
-            Pixelforgex is a small studio that plans, designs, and ships web
-            &amp; app products — clean code, thoughtful design, and a team that
-            actually replies.
+            Three of us, no account managers, no bloated process. Just clean
+            code and sharp design, from your first message to the day it
+            ships.
           </motion.p>
 
           <motion.div

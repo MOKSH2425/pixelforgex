@@ -70,6 +70,9 @@ export const SERVICES = [
 export const PROJECTS = [
   {
     id: "pixelforgex-developer",
+    url: "https://pixelforgex-developer.vercel.app/",
+    status: "live",
+    linkLabel: "Visit site",
     category: "WEB DEVELOPMENT / CORPORATE REAL ESTATE WEBSITE",
     name: "PIXELFORGEX DEVELOPER WEBSITE",
     desc: "A modern, responsive multi-page website built to showcase a premium eco-luxury real estate developer with a polished buyer journey.",
@@ -81,6 +84,9 @@ export const PROJECTS = [
   },
   {
     id: "beauty-atelier",
+    url: "https://beauty-products-pixel-forgex.vercel.app/",
+    status: "live",
+    linkLabel: "Visit site",
     category: "FULL-STACK WEB DEVELOPMENT / E-COMMERCE",
     name: "BEAUTY ATELIER E-COMMERCE PLATFORM",
     desc: "A full-stack MERN e-commerce platform crafted to deliver a premium shopping experience for luxury beauty and skincare products.",
@@ -92,6 +98,9 @@ export const PROJECTS = [
   },
   {
     id: "smartmed-fullstack",
+    url: "https://smartmed-fullstack.vercel.app/",
+    status: "live",
+    linkLabel: "Visit site",
     category: "FULL-STACK WEB DEVELOPMENT / HEALTHCARE TECH",
     name: "SMARTMED RECOMMENDATION SYSTEM",
     desc: "A full-stack healthcare application built around an intelligent symptom-driven medicine recommendation engine and a clean, responsive user experience.",
@@ -103,6 +112,9 @@ export const PROJECTS = [
   },
   {
     id: "aura-coffee",
+    url: "https://aura-coffee-theta.vercel.app/",
+    status: "live",
+    linkLabel: "Visit site",
     category: "FRONTEND WEB DEVELOPMENT / E-COMMERCE CONCEPT",
     name: "AURA COFFEE WEB EXPERIENCE",
     desc: "An elegant concept website for a premium coffee boutique, combining immersive storytelling, product discovery, and a refined reservation flow.",
@@ -114,6 +126,9 @@ export const PROJECTS = [
   },
   {
     id: "ckpcet-event-registration",
+    url: "https://college-events-app-blond.vercel.app/",
+    status: "live",
+    linkLabel: "Visit site",
     category: "FULL-STACK WEB DEVELOPMENT / EVENT MANAGEMENT",
     name: "CAMPUS EVENT REGISTRATION SYSTEM",
     desc: "A centralized MERN stack platform for campus event discovery, student registration, and streamlined administrative tracking.",
@@ -125,6 +140,9 @@ export const PROJECTS = [
   },
   {
     id: "expense-tracker-app",
+    url: "https://drive.google.com/file/d/1jfyZIqly9d5ZI8BAGuW_Rg3jQWa_xOhq/view",
+    status: "demo",
+    linkLabel: "Watch demo",
     category: "MOBILE APP DEVELOPMENT / FINTECH",
     name: "EXPENSE TRACKER MOBILE APP",
     desc: "A cross-platform Flutter app for tracking income, expenses, budgets, and financial activity through a clean mobile-first experience.",
@@ -162,43 +180,6 @@ export const PROCESS_STEPS = [
     num: "05",
     title: "LAUNCH",
     desc: "Zero-downtime deployment. Monitoring live. 30-day post-launch support included.",
-  },
-] as const;
-
-// ── TEAM ──────────────────────────────────────────────────────
-export const TEAM = [
-  {
-    name: "DHRUVIN PARMAR",
-    role: "APP DEVLOPMENT LEAD",
-    bio: "Early in the journey, but strong on fundamentals. Focused on building fast, scalable apps with clean architecture and real-world impact.",
-    avatarPalette: ["#4F8EF7", "#0A84FF"],
-    links: [
-      { label: "GH", href: "#" },
-      { label: "LI", href: "#" },
-      { label: "TW", href: "#" },
-    ],
-  },
-  {
-    name: "MOKSH SHAH",
-    role: "LEAD UI/UX DESIGNER",
-    bio: "New to the field, but design runs deep. Obsessed with user behavior, clean interfaces, and crafting experiences that just feel right.",
-    avatarPalette: ["#A78BFA", "#8B5CF6"],
-    links: [
-      { label: "BE", href: "#" },
-      { label: "DR", href: "#" },
-      { label: "LI", href: "#" },
-    ],
-  },
-  {
-    name: "VIRAL KHAMBHATI",
-    role: "WEB DEVELOPMENT LEAD",
-    bio: "Fresher by experience, sharp by skill. Builds responsive, reliable web solutions with a strong grip on modern development practices.",
-    avatarPalette: ["#34D399", "#14B8A6"],
-    links: [
-      { label: "GH", href: "#" },
-      { label: "PH", href: "#" },
-      { label: "LI", href: "#" },
-    ],
   },
 ] as const;
 
@@ -302,8 +283,6 @@ export const NAV_LINKS = [
   { label: "Services", href: "/#services" },
   { label: "Work", href: "/#portfolio" },
   { label: "About", href: "/#about" },
-  { label: "Team", href: "/#team" },
-  { label: "Case Studies", href: "/work" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 
@@ -323,7 +302,6 @@ export const FOOTER_COLUMNS = [
     title: "COMPANY",
     links: [
       { label: "About Us", href: "/#about" },
-      { label: "Team", href: "/#team" },
       { label: "Projects", href: "/#portfolio" },
       { label: "How We Work", href: "/#process" },
       { label: "Contact", href: "/#contact" },
