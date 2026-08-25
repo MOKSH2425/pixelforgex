@@ -149,3 +149,15 @@ body::before {
   content: "// ";
   color: var(--color-faint);
 }
+
+/* -- TESTIMONIALS: scattered pinned-note effect -- */
+.testimonial-card {
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0px));
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: rotate(0deg) translateY(0) scale(1.03) !important;
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.18);
+  z-index: 10;
+  position: relative;
+}

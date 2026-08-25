@@ -10,6 +10,7 @@ interface PixelButtonProps {
   variant?: "primary" | "outline";
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 /** Kept the filename to avoid touching every import; now a magnetic, springy pill button. */
@@ -18,6 +19,7 @@ export default function PixelButton({
   variant = "primary",
   children,
   className,
+  onClick,
 }: PixelButtonProps) {
   const { ref, x, y, handleMouseMove, handleMouseLeave } = useMagnetic<HTMLDivElement>(0.25);
 
@@ -31,7 +33,7 @@ export default function PixelButton({
       whileTap={{ scale: 0.93 }}
       transition={{ type: "spring", stiffness: 400, damping: 15 }}
     >
-      <Link href={href} className={clsx("btn", variant === "primary" ? "btn-primary" : "btn-outline", className)}>
+      <Link href={href} onClick={onClick} className={clsx("btn", variant === "primary" ? "btn-primary" : "btn-outline", className)}>
         {children}
       </Link>
     </motion.div>
