@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import FadeUp from "@/components/ui/FadeUp";
@@ -10,49 +10,49 @@ import { PROJECTS } from "@/lib/data";
 const FILTERS = ["ALL", "WEB", "APP", "E-COM", "SAAS"] as const;
 type Filter = (typeof FILTERS)[number];
 
-function hostname(url: string) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
+// Bento spans, desktop only — mobile/tablet stay a clean, compact 2-col grid.
+const SPANS = [
+  "lg:col-span-2 lg:row-span-2",
+  "",
+  "",
+  "lg:col-span-2",
+  "",
+  "lg:row-span-2",
+  "",
+  "lg:col-span-2",
+  "",
+  "",
+  "",
+];
+
+function shade(hex: string, amt: number) {
+  const n = parseInt(hex.replace("#", ""), 16);
+  const r = Math.min(255, Math.max(0, (n >> 16) + amt));
+  const g = Math.min(255, Math.max(0, ((n >> 8) & 0xff) + amt));
+  const b = Math.min(255, Math.max(0, (n & 0xff) + amt));
+  return `rgb(${r},${g},${b})`;
 }
 
 export default function Portfolio() {
   const [active, setActive] = useState<Filter>("ALL");
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const [canHover, setCanHover] = useState(false);
-
-  useEffect(() => {
-    setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
-  }, []);
 
   const visible = PROJECTS.filter(
     (p) => active === "ALL" || p.tags.includes(active as never),
   );
 
-  const hovered = visible.find((p) => p.id === hoveredId) ?? null;
-
   return (
-    <section
-      id="portfolio"
-      className="relative z-[1] py-28 px-6 bg-surface-2"
-      onMouseMove={(e) => {
-        if (canHover) setMouse({ x: e.clientX, y: e.clientY });
-      }}
-    >
+    <section id="portfolio" className="relative z-[1] py-28 px-6 bg-surface-2">
       <div className="max-w-[1100px] mx-auto">
         <FadeUp>
           <SectionHeader
             label="Selected work"
             title="A few projects we're proud of."
-            sub="Real builds, not case studies. Hover a name to preview it, click to open the live thing."
+            sub="Real builds, not case studies. Every tile opens the live thing."
           />
         </FadeUp>
 
         <FadeUp delay={0.1}>
-          <div className="flex gap-2 flex-wrap mb-4">
+          <div className="flex gap-2 flex-wrap mb-6">
             {FILTERS.map((f) => (
               <button
                 key={f}
@@ -69,121 +69,70 @@ export default function Portfolio() {
           </div>
         </FadeUp>
 
-        <div className="border-t border-line" onMouseLeave={() => setHoveredId(null)}>
-          <AnimatePresence initial={false}>
-            {visible.map((proj) => (
+        <motion.div
+          layout
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:auto-rows-[160px]"
+        >
+          <AnimatePresence initial={false} mode="popLayout">
+            {visible.map((proj, i) => (
               <motion.a
                 key={proj.id}
                 layout
                 href={proj.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => setHoveredId(proj.id)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="group relative flex items-center justify-between gap-4 py-6 sm:py-7 border-b border-line no-underline"
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.25 }}
+                className={`group relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-square lg:aspect-auto no-underline ${SPANS[i % SPANS.length]}`}
+                style={{
+                  background: `linear-gradient(150deg, ${proj.color} 0%, ${shade(proj.color, -50)} 100%)`,
+                }}
               >
-                <div className="min-w-0 flex-1">
-                  <h3
-                    className={`font-display text-[22px] sm:text-[32px] md:text-[38px] font-semibold leading-tight tracking-tight truncate transition-colors duration-200 ${
-                      canHover && hoveredId && hoveredId !== proj.id
-                        ? "text-faint"
-                        : "text-ink group-hover:text-accent"
-                    }`}
-                  >
-                    {proj.name}
-                  </h3>
-                  <p className="eyebrow text-[10.5px] sm:text-[11px] mt-1.5 normal-case tracking-normal truncate opacity-80">
-                    {proj.category}
-                  </p>
-                </div>
+                {/* subtle diagonal texture so the tile doesn't read as a flat SaaS block */}
+                <span
+                  aria-hidden
+                  className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 14px)",
+                  }}
+                />
+                <span
+                  aria-hidden
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(0deg, rgba(0,0,0,0.55) 0%, transparent 55%)",
+                  }}
+                />
 
-                <div className="hidden sm:flex items-center flex-shrink-0">
-                  <span
-                    className="inline-flex items-center gap-1.5 font-mono text-[10.5px] font-medium uppercase tracking-wider px-2.5 py-1 rounded-full border"
-                    style={{ borderColor: `${proj.color}55`, color: proj.color }}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ background: proj.color }} />
-                    {proj.status === "live" ? "Live" : "Demo"}
-                  </span>
-                </div>
+                <div className="relative h-full flex flex-col justify-between p-3.5 sm:p-5">
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="font-mono text-[9px] sm:text-[10.5px] font-medium uppercase tracking-wider text-white/85 bg-black/20 backdrop-blur-sm rounded-full px-2 py-1 truncate">
+                      {proj.category.split(" / ")[1] ?? proj.category}
+                    </span>
+                    <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                      <ArrowUpRight size={13} className="text-white" />
+                    </span>
+                  </div>
 
-                <span className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-line flex items-center justify-center transition-transform duration-200 group-hover:rotate-45">
-                  <ArrowUpRight size={15} className="text-ink" />
-                </span>
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 font-mono text-[9px] sm:text-[10px] font-medium uppercase tracking-wide text-white/80 mb-1.5 sm:mb-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+                      {proj.status === "live" ? "Live" : "Demo"}
+                    </span>
+                    <h3 className="font-display font-semibold text-white leading-[1.05] tracking-tight text-[15px] sm:text-[19px] md:text-[22px] drop-shadow-sm">
+                      {proj.name}
+                    </h3>
+                  </div>
+                </div>
               </motion.a>
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Cursor-following preview — desktop/pointer devices only */}
-      {canHover && (
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              key={hovered.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                x: Math.min(mouse.x + 28, (typeof window !== "undefined" ? window.innerWidth : 1200) - 300),
-                y: mouse.y - 110,
-              }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                y: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.15 },
-                scale: { duration: 0.15 },
-              }}
-              className="fixed top-0 left-0 z-[500] w-[270px] pointer-events-none rounded-2xl overflow-hidden border border-line shadow-lift"
-              style={{ background: "var(--color-surface)" }}
-            >
-              {/* faux browser chrome — shows the real URL, not a fake screenshot */}
-              <div
-                className="flex items-center gap-1.5 px-3.5 py-2.5 border-b border-line"
-                style={{ background: `${hovered.color}12` }}
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FF5F57]" />
-                <span className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
-                <span className="w-2 h-2 rounded-full bg-[#28C840]" />
-                <span className="ml-2 font-mono text-[10px] text-subtle truncate">
-                  {hostname(hovered.url)}
-                </span>
-              </div>
-
-              <div
-                className="relative h-[140px] flex items-center justify-center overflow-hidden"
-                style={{
-                  background: `linear-gradient(155deg, ${hovered.color}30, var(--color-surface-2))`,
-                }}
-              >
-                <span
-                  className="font-display font-semibold leading-none select-none opacity-25"
-                  style={{ fontSize: "88px", color: hovered.color }}
-                >
-                  {hovered.name.charAt(0)}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between px-3.5 py-3">
-                <span className="text-[12.5px] font-medium text-ink truncate pr-2">
-                  {hovered.name}
-                </span>
-                <span
-                  className="font-mono text-[10px] font-medium uppercase tracking-wide flex-shrink-0"
-                  style={{ color: hovered.color }}
-                >
-                  {hovered.linkLabel} →
-                </span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
     </section>
   );
 }
