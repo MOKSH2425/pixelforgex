@@ -161,3 +161,12 @@ body::before {
   z-index: 10;
   position: relative;
 }
+
+/* -- MOBILE CAROUSELS -- */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

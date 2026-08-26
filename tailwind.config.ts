@@ -38,6 +38,7 @@ const config: Config = {
         float:       "float 6s ease-in-out infinite",
         ticker:      "ticker 40s linear infinite",
         testimonial: "ticker 50s linear infinite",
+        marquee:     "ticker 26s linear infinite",
         fadeup:      "fadeup 0.7s ease both",
       },
       keyframes: {

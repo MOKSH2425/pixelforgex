@@ -30,7 +30,7 @@ const INFO_ITEMS = [
   { icon: MapPin, label: "Location", val: SITE.location },
   { icon: Mail, label: "Email", val: SITE.email },
   { icon: Clock, label: "Response time", val: SITE.responseTime },
-  { icon: Phone, label: "Contact", val: "+91 635344388" },
+  { icon: Phone, label: "Contact", val: "+91 63534 44388" },
 ];
 
 export default function Contact() {

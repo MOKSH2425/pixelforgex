@@ -26,13 +26,17 @@ export default function Services() {
         />
       </FadeUp>
 
+      <p className="sm:hidden font-mono text-[11px] text-faint mb-4 -mt-2">
+        ← swipe to browse →
+      </p>
+
       <StaggerGrid
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 [grid-auto-flow:dense] lg:auto-rows-[210px]"
+        className="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none no-scrollbar -mx-6 sm:mx-0 px-6 sm:px-0 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 [grid-auto-flow:dense] lg:auto-rows-[210px]"
       >
         {SERVICES.map((svc, i) => {
           const big = SPANS[i]?.includes("col-span-2") || SPANS[i]?.includes("row-span-2");
           return (
-            <StaggerItem key={svc.num} className={SPANS[i] ?? ""}>
+            <StaggerItem key={svc.num} className={`flex-shrink-0 w-[78%] sm:w-auto snap-start ${SPANS[i] ?? ""}`}>
               <TiltCard
                 maxTilt={5}
                 className="card p-7 h-full flex flex-col justify-between rounded-[20px] overflow-hidden"
