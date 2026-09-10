@@ -68,10 +68,10 @@ export default function WebAppPage() {
             Got a web or app idea?
           </h2>
           <p className="text-subtle text-[16px] leading-7 mb-8">
-            Tell us what you're building — we'll tell you honestly whether it's a good fit.
+            Tell us what you&apos;re building — we&apos;ll tell you honestly whether it&apos;s a good fit.
           </p>
           <PixelButton href="/#contact" className="px-6 py-3">
-            Let's talk <ArrowRight size={16} strokeWidth={2} />
+            Let&apos;s talk <ArrowRight size={16} strokeWidth={2} />
           </PixelButton>
         </div>
       </section>

@@ -56,7 +56,7 @@ export default function Results() {
         </StaggerGrid>
 
         <p className="text-[13px] text-faint mt-8 text-center">
-          Real numbers on request — reach out and we'll walk you through what's worked for accounts like these.
+          Real numbers on request — reach out and we&apos;ll walk you through what&apos;s worked for accounts like these.
         </p>
       </div>
     </section>

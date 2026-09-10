@@ -1,6 +1,5 @@
 import { Nfc, ArrowRight } from "lucide-react";
 import FadeUp from "@/components/ui/FadeUp";
-import SectionHeader from "@/components/ui/SectionHeader";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
 import PixelButton from "@/components/ui/PixelButton";
 import { NFC_FEATURES } from "@/lib/data";

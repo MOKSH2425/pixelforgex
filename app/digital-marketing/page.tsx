@@ -67,10 +67,10 @@ export default function DigitalMarketingPage() {
             Ready to actually get found online?
           </h2>
           <p className="text-subtle text-[16px] leading-7 mb-8">
-            Tell us about your brand — we'll tell you honestly what it needs.
+            Tell us about your brand — we&apos;ll tell you honestly what it needs.
           </p>
           <PixelButton href="/#contact" className="px-6 py-3">
-            Let's talk <ArrowRight size={16} strokeWidth={2} />
+            Let&apos;s talk <ArrowRight size={16} strokeWidth={2} />
           </PixelButton>
         </div>
       </section>
