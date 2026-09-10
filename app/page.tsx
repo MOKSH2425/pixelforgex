@@ -1,7 +1,5 @@
-import Navbar        from "@/components/layout/Navbar";
-import Footer        from "@/components/layout/Footer";
-import GlitchBar     from "@/components/ui/GlitchBar";
 import Hero          from "@/components/sections/Hero";
+import ServiceHub    from "@/components/sections/ServiceHub";
 import Ticker        from "@/components/sections/Ticker";
 import Services      from "@/components/sections/Services";
 import Portfolio     from "@/components/sections/Portfolio";
@@ -14,21 +12,16 @@ import Contact       from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
-      <GlitchBar />
-      <Navbar />
-      <main>
-        <Hero />
-        <Ticker />
-        <Services />
-        <Portfolio />
-        <Process />
-        <About />
-        {/* <WhyUs /> — temporarily disabled, restore when ready */}
-        <Testimonials />
-        <Contact />
-      </main>
-      <GlitchBar />
-      <Footer />
+      <Hero />
+      <ServiceHub />
+      <Ticker />
+      <Services />
+      <Portfolio />
+      <Process />
+      <About />
+      {/* <WhyUs /> — temporarily disabled, restore when ready */}
+      <Testimonials />
+      <Contact />
     </>
   );
 }

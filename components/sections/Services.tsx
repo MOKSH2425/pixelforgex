@@ -15,15 +15,34 @@ const SPANS = [
   "",
 ];
 
-export default function Services() {
+interface ServiceItem {
+  num: string;
+  icon: string;
+  accent: string;
+  title: string;
+  desc: string;
+  tags: readonly string[];
+}
+
+interface ServicesProps {
+  id?: string;
+  label?: string;
+  title?: string;
+  sub?: string;
+  items?: readonly ServiceItem[];
+}
+
+export default function Services({
+  id = "services",
+  label = "What we do",
+  title = "Services built around your product, not our template.",
+  sub = "Every engagement starts with your goals — not a checklist. Pick what you need, skip what you don't.",
+  items = SERVICES,
+}: ServicesProps) {
   return (
-    <section id="services" className="py-28 px-6 max-w-[1100px] mx-auto">
+    <section id={id} className="py-28 px-6 max-w-[1100px] mx-auto">
       <FadeUp>
-        <SectionHeader
-          label="What we do"
-          title="Services built around your product, not our template."
-          sub="Every engagement starts with your goals — not a checklist. Pick what you need, skip what you don't."
-        />
+        <SectionHeader label={label} title={title} sub={sub} />
       </FadeUp>
 
       <p className="sm:hidden font-mono text-[11px] text-faint mb-4 -mt-2">
@@ -33,7 +52,7 @@ export default function Services() {
       <StaggerGrid
         className="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none no-scrollbar -mx-6 sm:mx-0 px-6 sm:px-0 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 [grid-auto-flow:dense] lg:auto-rows-[210px]"
       >
-        {SERVICES.map((svc, i) => {
+        {items.map((svc, i) => {
           const big = SPANS[i]?.includes("col-span-2") || SPANS[i]?.includes("row-span-2");
           return (
             <StaggerItem key={svc.num} className={`flex-shrink-0 w-[78%] sm:w-auto snap-start ${SPANS[i] ?? ""}`}>

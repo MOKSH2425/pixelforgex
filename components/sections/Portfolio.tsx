@@ -25,11 +25,31 @@ const SPANS = [
   "",
 ];
 
-export default function Portfolio() {
+interface PortfolioProps {
+  id?: string;
+  label?: string;
+  title?: string;
+  sub?: string;
+  restrictTags?: readonly Filter[];
+  showFilters?: boolean;
+}
+
+export default function Portfolio({
+  id = "portfolio",
+  label = "Selected work",
+  title = "A few projects we're proud of.",
+  sub = "Real builds, not case studies. Every tile opens the live thing.",
+  restrictTags,
+  showFilters = true,
+}: PortfolioProps) {
   const [active, setActive] = useState<Filter>("ALL");
   const [expanded, setExpanded] = useState(false);
 
-  const visible = PROJECTS.filter(
+  const scoped = restrictTags
+    ? PROJECTS.filter((p) => p.tags.some((t) => restrictTags.includes(t as Filter)))
+    : PROJECTS;
+
+  const visible = scoped.filter(
     (p) => active === "ALL" || p.tags.includes(active as never),
   );
 
@@ -38,33 +58,31 @@ export default function Portfolio() {
   }, [active]);
 
   return (
-    <section id="portfolio" className="relative z-[1] py-28 px-6 bg-surface-2">
+    <section id={id} className="relative z-[1] py-28 px-6 bg-surface-2">
       <div className="max-w-[1100px] mx-auto">
         <FadeUp>
-          <SectionHeader
-            label="Selected work"
-            title="A few projects we're proud of."
-            sub="Real builds, not case studies. Every tile opens the live thing."
-          />
+          <SectionHeader label={label} title={title} sub={sub} />
         </FadeUp>
 
-        <FadeUp delay={0.1}>
-          <div className="flex gap-2 flex-wrap mb-6">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setActive(f)}
-                className={`text-[13px] font-medium rounded-full px-4 py-2 cursor-pointer transition-all duration-200 border ${
-                  active === f
-                    ? "text-accent-ink bg-accent border-accent"
-                    : "text-subtle border-line hover:border-faint hover:text-ink"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
-        </FadeUp>
+        {showFilters && (
+          <FadeUp delay={0.1}>
+            <div className="flex gap-2 flex-wrap mb-6">
+              {FILTERS.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setActive(f)}
+                  className={`text-[13px] font-medium rounded-full px-4 py-2 cursor-pointer transition-all duration-200 border ${
+                    active === f
+                      ? "text-accent-ink bg-accent border-accent"
+                      : "text-subtle border-line hover:border-faint hover:text-ink"
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+          </FadeUp>
+        )}
 
         <div
           className={`relative overflow-hidden transition-[max-height] duration-500 ease-out sm:!max-h-none sm:!overflow-visible ${

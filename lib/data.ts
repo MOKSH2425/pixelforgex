@@ -350,9 +350,9 @@ export const TICKER_ITEMS = [
 
 // ── NAV LINKS ─────────────────────────────────────────────────
 export const NAV_LINKS = [
-  { label: "Services", href: "/#services" },
+  { label: "Web & App", href: "/web-app" },
+  { label: "Digital Marketing", href: "/digital-marketing" },
   { label: "Work", href: "/#portfolio" },
-  { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 
@@ -361,11 +361,11 @@ export const FOOTER_COLUMNS = [
   {
     title: "SERVICES",
     links: [
-      { label: "Web Development", href: "/#services" },
-      { label: "App Development", href: "/#services" },
-      { label: "UI/UX Design", href: "/#services" },
-      { label: "E-Commerce", href: "/#services" },
-      { label: "SaaS Products", href: "/#services" },
+      { label: "Web Development", href: "/web-app" },
+      { label: "App Development", href: "/web-app" },
+      { label: "UI/UX Design", href: "/web-app" },
+      { label: "Digital Marketing", href: "/digital-marketing" },
+      { label: "NFC Cards", href: "/digital-marketing#nfc-cards" },
     ],
   },
   {
@@ -373,7 +373,6 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: "About Us", href: "/#about" },
       { label: "Projects", href: "/#portfolio" },
-      { label: "How We Work", href: "/#process" },
       { label: "Contact", href: "/#contact" },
     ],
   },
@@ -383,5 +382,169 @@ export const FOOTER_COLUMNS = [
       { label: "Privacy Policy", href: "/legal/privacy" },
       { label: "Terms of Service", href: "/legal/terms" },
     ],
+  },
+] as const;
+
+// ── DIGITAL MARKETING: SERVICES ─────────────────────────────────
+export const DM_SERVICES = [
+  {
+    num: "01",
+    icon: "📱",
+    accent: "#E1306C",
+    title: "PLATFORM MANAGEMENT",
+    desc: "Complete, hands-on management of Instagram, Facebook, Google My Business (with SEO), and YouTube — one team owning your whole presence.",
+    tags: ["Instagram", "Facebook", "GMB / SEO", "YouTube"],
+  },
+  {
+    num: "02",
+    icon: "🗓️",
+    accent: "#8B5CF6",
+    title: "CONTENT STRATEGY & CALENDAR",
+    desc: "Monthly content strategy and calendar planning so every post has a reason to exist — not just filler to hit a quota.",
+    tags: ["Strategy", "Calendar Planning", "Brand Consistency"],
+  },
+  {
+    num: "03",
+    icon: "🎨",
+    accent: "#14B8A6",
+    title: "CREATIVE PRODUCTION",
+    desc: "Professional graphic design, reel editing, motion graphics, and caption writing — produced in-house, not templated.",
+    tags: ["Graphic Design", "Reel Editing", "Motion Graphics", "Captions"],
+  },
+  {
+    num: "04",
+    icon: "🔍",
+    accent: "#E8A33D",
+    title: "GROWTH & OPTIMIZATION",
+    desc: "Hashtag research, profile optimization, scheduling & publishing, audience engagement, and organic growth strategy.",
+    tags: ["Hashtag Research", "Scheduling", "Engagement", "Organic Growth"],
+  },
+  {
+    num: "05",
+    icon: "📊",
+    accent: "#0A84FF",
+    title: "PERFORMANCE MARKETING",
+    desc: "Complete Meta and Google Ads management — campaign planning, audience targeting, budget optimization, and monthly reporting.",
+    tags: ["Meta Ads", "Google Ads", "Lead Gen", "Reporting"],
+  },
+  {
+    num: "06",
+    icon: "📈",
+    accent: "#F2725A",
+    title: "MONTHLY REPORTING",
+    desc: "Clear, honest performance monitoring every month — no vanity metrics, just what actually moved and what we're doing next.",
+    tags: ["Analytics", "Monthly Reports", "Transparency"],
+  },
+] as const;
+
+// ── DIGITAL MARKETING: MONTHLY DELIVERABLES ─────────────────────
+export const DM_DELIVERABLES = [
+  {
+    title: "Creative Social Posts",
+    items: ["Offer & promotional creatives", "Festival & seasonal campaigns", "Customer engagement posts"],
+  },
+  {
+    title: "Professional Reels",
+    items: ["Personal brand reels", "Customer experience videos", "Behind-the-scenes content", "Trend-based reels", "Promotional videos"],
+  },
+  {
+    title: "Video & Motion",
+    items: ["Creative video editing", "High-quality motion graphics", "Brand awareness creatives", "Informative content"],
+  },
+] as const;
+
+// ── DIGITAL MARKETING: PROCESS ───────────────────────────────────
+export const DM_PROCESS_STEPS = [
+  {
+    num: "01",
+    title: "AUDIT",
+    desc: "We look at what's there — content, engagement, ad history — and figure out what's actually working.",
+  },
+  {
+    num: "02",
+    title: "STRATEGY",
+    desc: "A content calendar and platform plan built around your goals, not a generic template.",
+  },
+  {
+    num: "03",
+    title: "PRODUCTION",
+    desc: "Posts, reels, and creatives get made — designed, edited, captioned, ready to publish.",
+  },
+  {
+    num: "04",
+    title: "PUBLISH & ENGAGE",
+    desc: "Scheduled, posted, and actively managed — replies, comments, and community, not just uploads.",
+  },
+  {
+    num: "05",
+    title: "REPORT & OPTIMIZE",
+    desc: "Monthly performance review. What moved, what didn't, what we're changing next month.",
+  },
+] as const;
+
+// ── DIGITAL MARKETING: CLIENT WORK ───────────────────────────────
+// Real accounts we manage or have managed. No fabricated metrics —
+// only what's publicly verifiable or explicitly confirmed. Add real
+// numbers here as soon as they're available.
+export const DM_CLIENTS = [
+  {
+    name: "Samarth Diam",
+    handle: "@samarthdiam_official",
+    url: "https://www.instagram.com/samarthdiam_official/",
+    niche: "Fancy colored diamonds",
+    scope: "Instagram content, brand consistency, and profile positioning for a premium diamond house.",
+    color: "#8FB8FF",
+  },
+  {
+    name: "WomaNews",
+    handle: "@womanews.official",
+    url: "https://www.instagram.com/womanews.official/",
+    niche: "Women entrepreneur media brand",
+    scope: "Content strategy and platform management for a media brand spotlighting women entrepreneurs.",
+    color: "#F472B6",
+  },
+  {
+    name: "Tusshar Agarwal",
+    handle: "@tussharagarwal_",
+    url: "https://www.instagram.com/tussharagarwal_/",
+    niche: "Personal brand",
+    scope: "Personal brand content strategy, reel editing, and consistent posting.",
+    color: "#FBBF24",
+  },
+  {
+    name: "Just a Path",
+    handle: "@just.a.path",
+    url: "https://www.instagram.com/just.a.path/",
+    niche: "Brand content",
+    scope: "Ongoing content production and profile management.",
+    color: "#4ADE80",
+  },
+] as const;
+
+export const DM_TICKER_ITEMS = [
+  "INSTAGRAM MANAGEMENT",
+  "CONTENT STRATEGY",
+  "REEL EDITING",
+  "GOOGLE MY BUSINESS",
+  "META ADS",
+  "GOOGLE ADS",
+  "SEO",
+  "NFC CARDS",
+] as const;
+
+// ── NFC CARDS ─────────────────────────────────────────────────
+// Pricing and specs pending real data — kept honest, no invented numbers.
+export const NFC_FEATURES = [
+  {
+    title: "TAP TO SHARE",
+    desc: "One tap shares your contact card, social links, portfolio, or business page — no app required for the person receiving it.",
+  },
+  {
+    title: "FULLY CUSTOM DESIGN",
+    desc: "Your branding, your finish. Designed in-house to match how you actually present yourself.",
+  },
+  {
+    title: "UPDATE ANYTIME",
+    desc: "Change what the card links to without reprinting — your card, always current.",
   },
 ] as const;

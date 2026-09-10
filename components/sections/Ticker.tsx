@@ -1,7 +1,7 @@
 import { TICKER_ITEMS } from "@/lib/data";
 
-export default function Ticker() {
-  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+export default function Ticker({ items: itemsProp }: { items?: readonly string[] }) {
+  const items = [...(itemsProp ?? TICKER_ITEMS), ...(itemsProp ?? TICKER_ITEMS)];
 
   return (
     <div className="relative border-y border-line bg-surface-2 py-5 overflow-hidden">

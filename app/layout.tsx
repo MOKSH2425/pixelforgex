@@ -3,6 +3,9 @@ import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CursorGlow from "@/components/ui/CursorGlow";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import GlitchBar from "@/components/ui/GlitchBar";
 import { ThemeProvider, themeInitScript } from "@/lib/theme";
 
 const inter = Inter({
@@ -84,7 +87,11 @@ export default function RootLayout({
       <body className="antialiased font-sans bg-bg text-ink">
         <ThemeProvider>
           <CursorGlow />
-          {children}
+          <GlitchBar />
+          <Navbar />
+          <main>{children}</main>
+          <GlitchBar />
+          <Footer />
 
           {/* Replace 919876543210 with your real number: 91 + your 10-digit mobile */}
           <WhatsAppButton

@@ -8,25 +8,41 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import TiltCard from "@/components/ui/TiltCard";
 import { PROCESS_STEPS } from "@/lib/data";
 
-export default function Process() {
+interface ProcessStep {
+  num: string;
+  title: string;
+  desc: string;
+}
+
+interface ProcessProps {
+  id?: string;
+  label?: string;
+  title?: string;
+  sub?: string;
+  steps?: readonly ProcessStep[];
+}
+
+export default function Process({
+  id = "process",
+  label = "Process",
+  title = "How we work",
+  sub = "A clean, predictable process. You always know where your project stands.",
+  steps = PROCESS_STEPS,
+}: ProcessProps) {
   const [hovered, setHovered] = useState<number | null>(null);
   const active = hovered ?? 0;
 
   return (
-    <section id="process" className="relative z-[1] py-28 px-6">
+    <section id={id} className="relative z-[1] py-28 px-6">
       <div className="max-w-[1100px] mx-auto">
         <FadeUp>
-          <SectionHeader
-            label="Process"
-            title="How we work"
-            sub="A clean, predictable process. You always know where your project stands."
-          />
+          <SectionHeader label={label} title={title} sub={sub} />
         </FadeUp>
 
         <div className="relative">
           <div className="hidden md:block absolute top-[27px] left-[8%] right-[8%] h-px bg-line overflow-hidden">
             <motion.div
-              animate={{ scaleX: (active + 1) / PROCESS_STEPS.length }}
+              animate={{ scaleX: (active + 1) / steps.length }}
               transition={{ type: "spring", stiffness: 120, damping: 22 }}
               className="h-full origin-left"
               style={{ background: "var(--color-accent)" }}
@@ -34,7 +50,7 @@ export default function Process() {
           </div>
 
           <StaggerGrid className="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-4">
-            {PROCESS_STEPS.map((step, i) => (
+            {steps.map((step, i) => (
               <StaggerItem key={step.num}>
                 <TiltCard
                   maxTilt={4}

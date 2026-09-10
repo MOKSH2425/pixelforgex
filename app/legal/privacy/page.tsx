@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export const metadata = {
   title: "Privacy Policy — Pixelforgex",
@@ -10,9 +8,7 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen pt-32 pb-24 px-6 relative z-[1]">
+    <main className="min-h-screen pt-32 pb-24 px-6 relative z-[1]">
         <div className="max-w-[760px] mx-auto">
           <Link
             href="/"
@@ -78,7 +74,5 @@ export default function PrivacyPage() {
           </div>
         </div>
       </main>
-      <Footer />
-    </>
   );
 }
