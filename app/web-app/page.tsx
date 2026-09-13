@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import VerticalHero from "@/components/sections/VerticalHero";
 import Ticker from "@/components/sections/Ticker";
 import Services from "@/components/sections/Services";
+import WhyStrip from "@/components/sections/WhyStrip";
 import Portfolio from "@/components/sections/Portfolio";
 import Process from "@/components/sections/Process";
 import PixelButton from "@/components/ui/PixelButton";
@@ -43,13 +44,15 @@ export default function WebAppPage() {
         sub="Every engagement starts with your goals — not a checklist."
       />
 
+      <WhyStrip />
+
       <Portfolio
         id="portfolio"
         label="Selected work"
         title="Web and app builds we're proud of."
         sub="Real projects, live and clickable — no case study filler."
-        restrictTags={["WEB", "APP"]}
-        showFilters={false}
+        restrictTags={["WEB", "APP", "E-COM", "SAAS"]}
+        showFilters={true}
       />
 
       <Process

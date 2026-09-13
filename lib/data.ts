@@ -352,7 +352,7 @@ export const TICKER_ITEMS = [
 export const NAV_LINKS = [
   { label: "Web & App", href: "/web-app" },
   { label: "Digital Marketing", href: "/digital-marketing" },
-  { label: "Work", href: "/#portfolio" },
+  { label: "Work", href: "/web-app#portfolio" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 
@@ -372,7 +372,7 @@ export const FOOTER_COLUMNS = [
     title: "COMPANY",
     links: [
       { label: "About Us", href: "/#about" },
-      { label: "Projects", href: "/#portfolio" },
+      { label: "Projects", href: "/web-app#portfolio" },
       { label: "Contact", href: "/#contact" },
     ],
   },

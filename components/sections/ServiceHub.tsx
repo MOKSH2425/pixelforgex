@@ -25,8 +25,10 @@ const HUB_CARDS = [
 export default function ServiceHub() {
   return (
     <section className="relative z-[1] py-8 px-6">
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-        {HUB_CARDS.map((c, i) => (
+      <div className="max-w-[1100px] mx-auto">
+        <p className="eyebrow text-center mb-5">Pick your lane</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          {HUB_CARDS.map((c, i) => (
           <FadeUp key={c.href} delay={i * 0.1}>
             <Link href={c.href} className="block no-underline group h-full">
               <TiltCard
@@ -74,7 +76,8 @@ export default function ServiceHub() {
               </TiltCard>
             </Link>
           </FadeUp>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

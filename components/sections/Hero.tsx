@@ -84,7 +84,7 @@ export default function Hero() {
               Start a project <ArrowRight size={16} strokeWidth={2} />
             </PixelButton>
             <PixelButton
-              href="/#portfolio"
+              href="/web-app#portfolio"
               variant="outline"
               className="w-full sm:w-auto px-4 py-2 text-sm mt-3 sm:mt-0"
             >

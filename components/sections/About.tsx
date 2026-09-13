@@ -2,6 +2,7 @@ import FadeUp from "@/components/ui/FadeUp";
 import { StaggerGrid, StaggerItem } from "@/components/ui/StaggerGrid";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Counter from "@/components/ui/Counter";
+import { WHY_ITEMS } from "@/lib/data";
 
 const STATS = [
   { num: "10+", label: "Projects shipped" },
@@ -18,10 +19,12 @@ const STACK_GROUPS = [
   { label: "Deploy", items: ["Vercel", "AWS", "GCP"] },
 ];
 
+const HIGHLIGHTS = WHY_ITEMS.slice(0, 2);
+
 export default function About() {
   return (
     <section id="about" className="relative z-[1] py-32 px-6">
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
           <FadeUp>
             <SectionHeader
@@ -30,7 +33,19 @@ export default function About() {
             />
           </FadeUp>
 
-          <StaggerGrid className="grid grid-cols-2 gap-4 mb-8">
+          <FadeUp delay={0.1} className="text-[15px] text-subtle leading-7 space-y-4 mb-8">
+            <p>
+              Pixelforgex is a tight-knit dev studio that builds web and mobile
+              products for startups, SMBs, and brands that care about quality.
+            </p>
+            <p>
+              We don&apos;t churn out generic templates. Every project gets our
+              full focus — from architecture decisions to the last detail in
+              your UI.
+            </p>
+          </FadeUp>
+
+          <StaggerGrid className="grid grid-cols-2 gap-4 mb-10">
             {STATS.map((s) => (
               <StaggerItem key={s.label}>
                 <div className="card p-5 text-center hover:shadow-softer transition-shadow duration-300">
@@ -45,20 +60,26 @@ export default function About() {
             ))}
           </StaggerGrid>
 
-          <FadeUp
-            delay={0.2}
-            className="text-[15px] text-subtle leading-7 space-y-4"
-          >
-            <p>
-              Pixelforgex is a tight-knit dev studio that builds web and mobile
-              products for startups, SMBs, and brands that care about quality.
-            </p>
-            <p>
-              We don&apos;t churn out generic templates. Every project gets our
-              full focus — from architecture decisions to the last detail in
-              your UI.
-            </p>
-          </FadeUp>
+          <p className="eyebrow mb-4">Why work with us</p>
+          <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {HIGHLIGHTS.map((h) => (
+              <StaggerItem key={h.title}>
+                <div className="flex items-start gap-2.5">
+                  <span className="text-[17px] leading-none flex-shrink-0 mt-0.5">
+                    {h.icon}
+                  </span>
+                  <div>
+                    <p className="text-[12.5px] font-semibold text-ink tracking-tight leading-tight">
+                      {h.title}
+                    </p>
+                    <p className="text-[12px] text-faint leading-5 mt-0.5">
+                      {h.desc}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerGrid>
         </div>
 
         <FadeUp delay={0.15}>
